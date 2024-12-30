@@ -1,0 +1,11 @@
+https://developers.google.com/workspace/guides/enable-apis
+
+
+dynamic world map which shows area covered by ast with 
+
+
+->build api?
+
+https://www.geeksforgeeks.org/how-to-build-an-api-from-scratch/
+
+->css with html of differet components

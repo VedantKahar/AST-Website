@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f6f8; /* Light gray background */
+    }
+
+    .login-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      overflow: hidden;
+    }
+
+    .image-section {
+      flex: 1;
+      background: url('icons/AST bg.jfif') center center / cover no-repeat;
+    }
+
+    .form-section {
+      flex: 0 0 30%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(to bottom, #ffffff, #e9eff5); /* White to light gray gradient */
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      width: 100%;
+      margin-bottom: 20px;
+      background-color: #004170;
+    }
+
+    .logo-container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+	margin:40px; 
+    }
+
+  .form-section h1 {
+  font-size: 28px;
+  color: #333; /* Dark gray for text */
+  margin: 60px 0 30px; /* Add margin-top: 30px; for spacing above the title */
+  text-align: center;
+}
+
+
+    .form-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc; /* Light gray border */
+      border-radius: 5px;
+      font-size: 14px;
+      outline: none;
+      background: white;
+    }
+
+    .form-group label {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      font-size: 14px;
+      color: #666; /* Medium gray */
+      transition: 0.3s ease;
+      pointer-events: none;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label {
+      top: -12px;
+      left: 10px;
+      font-size: 12px;
+      color: #0056b3; /* Navy blue */
+      background: #f4f6f8;
+      padding: 0 5px;
+    }
+
+    .password-container {
+      position: relative;
+    }
+
+    .password-container .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .forgotpasswordtext {
+      font-size: 14px;
+      color: #0056b3; /* Navy blue */
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .forgotpasswordtext:hover {
+      color: #004494; /* Darker navy */
+      text-decoration: underline;
+      transform: scale(1.05);
+    }
+
+    .actions-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .new-user {
+      font-size: 14px;
+      color: #0056b3; /* Navy blue */
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .new-user:hover {
+      color: #004494; /* Darker navy */
+      transform: scale(1.05);
+    }
+
+    .actions-container button {
+      padding: 10px 20px;
+      background-color: #0056b3; /* Navy blue */
+      border: none;
+      color: white;
+      font-size: 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .actions-container button:hover {
+      background-color: #004494; /* Darker navy */
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="image-section"></div>
+
+    <div class="form-section">
+      <div class="logo-container">
+        <img src="icons/AST Logo.png" alt=" Logo">
+      </div>
+
+      <h1>Login</h1>
+      
+      <div class="form-group">
+        <input type="text" id="username" placeholder=" " required>
+        <label for="username">Username or Email Address</label>
+      </div>
+
+      <div class="form-group password-container">
+        <input type="password" id="password" placeholder=" " required>
+        <label for="password">Password</label>
+      </div>
+  
+      <div>
+        <a class="forgotpasswordtext" href="forgotpassword.html">Forgot password?</a>
+      </div>
+      
+      <div class="actions-container">
+        <a class="new-user" href="createaccount.html">Create an Account</a>
+        <button type="button" onclick="validateLogin()">Log In</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      const togglePassword = document.querySelector(".toggle-password");
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        togglePassword.textContent = "Hide";
+      } else {
+        passwordInput.type = "password";
+        togglePassword.textContent = "Show";
+      }
+    }
+
+    function validateLogin() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const correctUsername = "q";
+      const correctPassword = "q";
+
+      if (username === correctUsername && password === correctPassword) {
+        window.location.href = "Homepage/homepage.html"; <!--homepage.html is located in inside homepage folder-->
+      } else {
+        alert("Invalid username or password. Please try again.");
+      }
+    }
+  </script>
+</body>
+</html>
