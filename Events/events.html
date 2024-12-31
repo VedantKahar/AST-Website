@@ -5,114 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
     <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-       
-        color: #000;
-        transition: background-color 0.3s ease-in-out;
-    }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #000;
+            transition: background-color 0.3s ease-in-out;
+        }
 
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 70px;
-        background-color: #2c3e50;
-        color: #ecf0f1;
-        transition: width 0.3s ease, background-color 0.3s ease-in-out;
-        overflow: hidden;
-        z-index: 2;
-    }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 70px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            transition: width 0.3s ease, background-color 0.3s ease-in-out;
+            overflow: hidden;
+            z-index: 2;
+        }
 
-    .sidebar.open {
-        width: 250px;
-    }
+        .sidebar.open {
+            width: 250px;
+        }
 
-    .sidebar:hover {
-        width: 250px;
-        background-color: #34495e;
-    }
+        .sidebar:hover {
+            width: 250px;
+            background-color: #34495e;
+        }
 
-    .sidebar h2 {
-        font-size: 1.2em;
-        margin: 20px;
-        display: flex;
-        align-items: center;
-        color: #ecf0f1;
-    }
+        .sidebar h2 {
+            font-size: 1.2em;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            color: #ecf0f1;
+        }
 
-    .sidebar h2 img {
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-        cursor: pointer;
-    }
+        .sidebar h2 img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
 
-    .sidebar h2 span {
-        opacity: 0;
-        transform: translateX(-20px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        white-space: nowrap;
-        overflow: hidden;
-    }
+        .sidebar h2 span {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+        }
 
-    .sidebar.open h2 span {
-        opacity: 1;
-        transform: translateX(0);
-    }
+        .sidebar.open h2 span {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-    .sidebar a {
-        text-decoration: none;
-        color: #bdc3c7;
-        font-size: 1em;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 15px 20px;
-        margin: 10px 0;
-        transition: color 0.3s ease, background-color 0.3s ease;
-        border-radius: 5px;
-    }
+        .sidebar a {
+            text-decoration: none;
+            color: #bdc3c7;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 20px;
+            margin: 10px 0;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: 5px;
+        }
 
-    .sidebar a img {
-        width: 20px;
-        height: 20px;
-    }
+        .sidebar a img {
+            width: 20px;
+            height: 20px;
+        }
 
-    .sidebar a span {
-        opacity: 0;
-        transform: translateX(-20px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        white-space: nowrap;
-        overflow: hidden;
-    }
+        .sidebar a span {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+        }
 
-    .sidebar.open a span {
-        opacity: 1;
-        transform: translateX(0);
-    }
+        .sidebar.open a span {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
-    .sidebar a:hover {
-        color: #ecf0f1;
-        background-color: #16a085;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
+        .sidebar a:hover {
+            color: #ecf0f1;
+            background-color: #16a085;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
 
-    .main-content {
-        margin-left: 70px;
-        padding: 20px;
-        transition: margin-left 0.3s ease, background-color 0.3s ease;
-        background-color: #fff;
-        border-radius: 8px;
-    }
+        .main-content {
+            margin-left: 70px;
+            padding: 20px;
+            transition: margin-left 0.3s ease, background-color 0.3s ease;
+            background-color: #fff;
+            border-radius: 8px;
+        }
 
-    .sidebar.open ~ .main-content {
-        margin-left: 250px;
-    }
+        .sidebar.open ~ .main-content {
+            margin-left: 250px;
+        }
+
         .header {
-            display: flex; 
+            display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: #34495e;
@@ -127,6 +127,7 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -159,15 +160,15 @@
         .profile-container {
             display: flex;
             align-items: center;
-            gap: 10px;  /* Space between profile image and username */
+            gap: 10px; /* Space between profile image and username */
         }
 
         .profile-container .profile-img {
-            width: 30px !important;    /* Force smaller width */
-            height: 30px !important;   /* Force smaller height */
+            width: 30px !important; /* Force smaller width */
+            height: 30px !important; /* Force smaller height */
             border-radius: 50%;
             object-fit: cover;
-            margin: 0;                 /* Ensure no extra margin */
+            margin: 0; /* Ensure no extra margin */
         }
 
         .user-name {
@@ -219,9 +220,9 @@
         }
 
         .event-form-header h4 {
-                margin: 0;
-                font-size: 1.2em;
-                color: #34495e;
+            margin: 0;
+            font-size: 1.2em;
+            color: #34495e;
         }
 
         .close-btn {
@@ -358,10 +359,10 @@
             right: 10px;
         }
 
-            /* Close button hover effect */
-            .close-btn:hover {
-                color: #c0392b
-            }
+        /* Close button hover effect */
+        .close-btn:hover {
+            color: #c0392b
+        }
 
         /* Event title in the modal */
         #event-details-title {
@@ -399,11 +400,8 @@
         .sidebar.open ~ .footer {
             margin-left: 250px; /* If sidebar is open, move footer further right */
         }
-
     </style>
 
-   <!-- FullCalendar CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -413,13 +411,13 @@
             <span>Advanced Sys-Tek</span>
         </h2>
         <hr>
-        <a href="#"><img src="../icons/dashboard-icon.png" alt="Dashboard Icon"> <span>Dashboard</span></a>
+        <a href="../Homepage/homepage.html"><img src="../icons/dashboard-icon.png" alt="Dashboard Icon"> <span>Dashboard</span></a>
         <a href="../Employees/employees.html"><img src="../icons/employees-icon.png" alt="Employees Icon"> <span>Employees</span></a>
         <a href="../Updates/updates.html"><img src="../icons/today-icon.png" alt="Updates Icon"> <span> Updates</span></a>
         <a href="../Townhall meeting/meeting.html"><img src="../icons/meeting-icon.png" alt="Meeting Icon"> <span> Meetings</span></a>
         <a href="../Resources/resources.html"><img src="../icons/resources-icon.png" alt="Resources Icon"> <span> Resources</span></a>
         <a href="../Manuals/manuals.html"><img src="../icons/manual-icon.png" alt="Manual Icon"> <span> Manuals</span></a>
-        <a href="../Policies/policies.html"><img src="../icons/policies-icon.png" alt="Policies Icon"> <span>Policies</span></a>
+        <a href="../Achievements/achievements.html"><img src="../icons/policies-icon.png" alt="Policies Icon"> <span>Achievements</span></a>
         <a href="../Events/events.html"><img src="../icons/events-icon.png" alt="Events Icon"> <span>Events</span></a>
         <a href="../login.html"><img src="../icons/logout-icon.png" alt="Log Out Icon"> <span>Log Out</span></a>
     </div>
@@ -437,8 +435,9 @@
         </div>
 
         <div id="calendar"></div>
+
         <!-- Event form with added date, time, and description inputs -->
-        <div class="event-form" id="event-form">
+        <div class="event-form" id="event-form" style="display:none;">
             <div class="event-form-header">
                 <span id="closeFormBtn" class="close-btn">&times;</span>
                 <h4>Add Event</h4>
@@ -460,16 +459,11 @@
                         <span class="slider round"></span>
                     </label>
                 </div>
-
                 <label for="event-description">Event Description:</label>
                 <textarea id="event-description" rows="4" placeholder="Describe your event..."></textarea>
-
                 <button type="button" id="addEventBtn">Add Event</button>
             </form>
         </div>
-
-
-
         <!-- Modal to display event details -->
         <div class="event-details-modal" id="event-details-modal">
             <div class="modal-content">
@@ -482,191 +476,272 @@
                 <button id="deleteEventBtn" class="btn btn-danger">Delete Event</button>
             </div>
         </div>
-
     </div>
 
 
-
-        <footer class="footer">
-            &copy; 2024 Advanced Sys-Tek Limited | Contact Us | Feedback
-        </footer>
-
-
-        <!-- FullCalendar JS -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.js"></script>
+    <footer class="footer">
+        &copy; 2024 Advanced Sys-Tek Limited | Contact Us | Feedback
+    </footer>
 
 
-        <script>
-            const toggleSidebar = document.getElementById('toggleSidebar');
-            const sidebar = document.getElementById('sidebar');
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.css" rel="stylesheet">
 
-            let isSidebarClicked = false; // Flag to track if sidebar is manually toggled
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-            // Toggle sidebar open/close on click
-            toggleSidebar.addEventListener('click', function () {
-                isSidebarClicked = !isSidebarClicked; // Toggle state
-                if (isSidebarClicked) {
-                    sidebar.classList.add('open');
-                } else {
-                    sidebar.classList.remove('open');
+    <!-- Moment.js -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.js"></script>
+
+    <script>
+        const toggleSidebar = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
+        let isSidebarClicked = false;
+
+        toggleSidebar.addEventListener('click', function () {
+            isSidebarClicked = !isSidebarClicked;
+            if (isSidebarClicked) {
+                sidebar.classList.add('open');
+            } else {
+                sidebar.classList.remove('open');
+            }
+        });
+
+        sidebar.addEventListener('mouseenter', function () {
+            if (!isSidebarClicked) {
+                sidebar.classList.add('open');
+            }
+        });
+
+        sidebar.addEventListener('mouseleave', function () {
+            if (!isSidebarClicked) {
+                sidebar.classList.remove('open');
+            }
+        });
+
+        $(document).ready(function () {
+            let clickedDate = null;
+            let currentEvent = null;
+
+            const apiKey = '6542fc55-57a4-4c4c-9472-384bc337f791'; // Your API Key
+            const countryCode = 'IN'; // Country code for India
+            const year = 2023; // Year for fetching holidays
+
+            // Fetch holidays from the server
+            function fetchIndianHolidays() {
+                fetch(` http://localhost:3000/holidays `)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.holidays) {
+                            const holidays = data.holidays;
+                            console.log("Fetched holidays:", holidays);
+
+                            // Create events from the holidays
+                            const events = holidays.map(holiday => {
+                                return {
+                                    title: holiday.name,
+                                    start: moment(holiday.date).toISOString(),
+                                    description: holiday.description,
+                                    allDay: true
+                                };
+                            });
+
+                            // Add fetched holidays as events to FullCalendar
+                            addHolidaysToCalendar(events);
+                        } else {
+                            console.error("bruhh Error fetching holidays:", data);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Failed to fetch holidays from the API:", error);
+                    });
+            }
+
+            // Add holidays to FullCalendar
+            function addHolidaysToCalendar(holidays) {
+                console.log("Adding holidays to calendar: ", holidays);
+
+                // Clear existing events and add new ones
+                $('#calendar').fullCalendar('removeEvents');  // Clear existing events
+                $('#calendar').fullCalendar('addEventSource', holidays); // Add fetched holidays as events
+            }
+
+            // Fetch holidays and festivals and add them to the calendar
+            fetchIndianHolidays();
+
+            // Initialize FullCalendar
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                events: function (start, end, timezone, callback) {
+                    const events = getStoredEvents();
+                    callback(events);  // Fetch events from localStorage
+                },
+                dayClick: function (date, jsEvent, view) {
+                    clickedDate = date.format();  // Store the clicked date
+                    $('#event-form').show();
+                    $('#event-name').val('');
+                    $('#event-description').val('');
+                    $('#event-time').val('');
+                    $('#event-date').val(clickedDate);  // Set the date in the form
+                    $('#event-name').focus();  // Focus on event name input
+                    $('#event-full-day').prop('checked', false);
+                },
+                eventClick: function (event, jsEvent, view) {
+                    currentEvent = event;
+                    showEventDetails(event);
+                },
+                viewRender: function (view, element) {
+                    // Re-add events from localStorage after view is rendered
+                    $('#calendar').fullCalendar('removeEvents');
+                    $('#calendar').fullCalendar('addEventSource', getStoredEvents());
                 }
             });
 
-            // Handle sidebar hover behavior (only works when not clicked)
-            sidebar.addEventListener('mouseenter', function () {
-                if (!isSidebarClicked) {
-                    sidebar.classList.add('open');
-                }
-            });
 
-            sidebar.addEventListener('mouseleave', function () {
-                if (!isSidebarClicked) {
-                    sidebar.classList.remove('open');
-                }
-            });
 
-            $(document).ready(function () {
-                let clickedDate = null; // Variable to store the clicked date
-                let currentEvent = null; // Variable to store the event that is currently being viewed
+            
 
-                // Initialize the calendar
-                $('#calendar').fullCalendar({
-                    header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
-                    },
-                    events: getStoredEvents(), // Load stored events from localStorage
-                    dayClick: function (date, jsEvent, view) {
-                        // Store the clicked date
-                        clickedDate = date.format(); // Use moment.js to format the date
-                        $('#event-form').show();
-                        $('#event-name').val(''); // Clear the input field
-                        $('#event-description').val(''); // Clear the description field
-                        $('#event-time').val(''); // Clear the time field
-                        $('#event-date').val(clickedDate); // Set the date field with the clicked date
-                        $('#event-name').focus(); // Focus the event name input field
-                        $('#event-full-day').prop('checked', false); // Ensure checkbox is unchecked by default
-                    },
+            // Function to close the event form
+            function closeForm() {
+                $('#event-form').hide();
+            }
 
-                    // Click on event to show details
-                    eventClick: function (event, jsEvent, view) {
-                        // Store the current event
-                        currentEvent = event;
-                        // Show modal with event details
-                        showEventDetails(event);
+            // Function to add an event
+            function addEvent() {
+                const eventName = $('#event-name').val();
+                const eventDate = $('#event-date').val();
+                const eventTime = $('#event-time').val();
+                const eventDescription = $('#event-description').val();
+                const isFullDay = $('#event-full-day').prop('checked');
+
+                if (eventName && eventDate && eventDescription) {
+                    let eventStart = eventDate;
+
+                    // If not a full day event, add time to the start date
+                    if (!isFullDay && eventTime) {
+                        eventStart += ' ' + eventTime;
                     }
-                });
 
-                // Function to close the event form
-                function closeForm() {
-                    $('#event-form').hide();
+                    const eventId = new Date().getTime();  // Unique event ID
+
+                    const event = {
+                        id: eventId,
+                        title: eventName,
+                        start: eventStart,
+                        description: eventDescription,
+                        allDay: isFullDay
+                    };
+
+                    // Add event to FullCalendar
+                    $('#calendar').fullCalendar('renderEvent', event);
+
+                    // Save event to localStorage
+                    saveEventToLocalStorage(event);
+
+                    closeForm();  // Close the event form
+                } else {
+                    alert('Please fill in all fields');
                 }
+            }
 
-                // Function to add event to the calendar and localStorage
-                function addEvent() {
+            // Function to save event to localStorage
+            function saveEventToLocalStorage(event) {
+                let events = JSON.parse(localStorage.getItem('events')) || [];
+                events = events.filter(e => e.id !== event.id);  // Prevent duplicate events
+                events.push(event);  // Add the new event
+                localStorage.setItem('events', JSON.stringify(events));
+
+                // Re-render the events in all views (month, week, day)
+                $('#calendar').fullCalendar('removeEvents');  // Clear existing events
+                $('#calendar').fullCalendar('addEventSource', getStoredEvents());  // Add updated events
+            }
+
+            // Function to get stored events from localStorage
+            function getStoredEvents() {
+                return JSON.parse(localStorage.getItem('events')) || [];
+            }
+
+            // Function to show event details in a modal
+            function showEventDetails(event) {
+                $('#event-details-title').text(event.title);
+                $('#event-details-time').text(event.start);
+                $('#event-details-description').text(event.description);
+                $('#event-details-modal').show();
+            }
+
+            // Function to close the event details modal
+            function closeDetailsModal() {
+                $('#event-details-modal').hide();
+            }
+
+            // Function to delete an event
+            function deleteEvent() {
+                if (currentEvent) {
+                    // Remove the event from FullCalendar
+                    $('#calendar').fullCalendar('removeEvents', currentEvent.id);
+
+                    // Remove the event from localStorage
+                    let events = JSON.parse(localStorage.getItem('events')) || [];
+                    events = events.filter(event => event.id !== currentEvent.id);  // Remove the deleted event
+                    localStorage.setItem('events', JSON.stringify(events));
+
+                    // Re-render the events in all views (month, week, day)
+                    $('#calendar').fullCalendar('removeEvents');
+                    $('#calendar').fullCalendar('addEventSource', getStoredEvents());
+
+                    closeDetailsModal();  // Close the event details modal
+                }
+            }
+
+
+            // Function to edit an event
+            function editEvent() {
+                if (currentEvent) {
                     const eventName = $('#event-name').val();
                     const eventDate = $('#event-date').val();
                     const eventTime = $('#event-time').val();
                     const eventDescription = $('#event-description').val();
-                    const isFullDay = $('#event-full-day').prop('checked'); // Check if toggle is active (Full Day)
+                    const isFullDay = $('#event-full-day').prop('checked');
 
                     if (eventName && eventDate && eventDescription) {
-                        let eventStart = eventDate; // Set start to the date (for both regular and full-day events)
+                        let eventStart = eventDate;
 
-                        // If it's a full-day event, don't include the time
                         if (!isFullDay && eventTime) {
-                            eventStart += ' ' + eventTime; // Combine date and time for regular events
+                            eventStart += ' ' + eventTime;
                         }
 
-                        // Create a unique ID for the event (using current timestamp)
-                        const eventId = new Date().getTime(); // Unique ID based on the current timestamp
+                        currentEvent.title = eventName;
+                        currentEvent.start = eventStart;
+                        currentEvent.description = eventDescription;
+                        currentEvent.allDay = isFullDay;
 
-                        const event = {
-                            id: eventId, // Store the event ID
-                            title: eventName,
-                            start: eventStart,
-                            description: eventDescription,
-                            allDay: isFullDay // Mark as a full-day event if toggle is on
-                        };
+                        $('#calendar').fullCalendar('updateEvent', currentEvent);
 
-                        // Add the event to the calendar
-                        $('#calendar').fullCalendar('renderEvent', event);
-
-                        // Save the event to localStorage
-                        saveEventToLocalStorage(event);
+                        saveEventToLocalStorage(currentEvent);
 
                         closeForm();
                     } else {
                         alert('Please fill in all fields');
                     }
                 }
+            }
 
-                // Function to save the event to localStorage
-                function saveEventToLocalStorage(event) {
-                    let events = JSON.parse(localStorage.getItem('events')) || [];
-                    events.push(event);
-                    localStorage.setItem('events', JSON.stringify(events));
-                }
-
-                // Function to get stored events from localStorage
-                function getStoredEvents() {
-                    return JSON.parse(localStorage.getItem('events')) || [];
-                }
-
-                // Function to display event details in a modal
-                function showEventDetails(event) {
-                    // Set event details in the modal
-                    $('#event-details-title').text(event.title);
-                    $('#event-details-time').text(event.start);
-                    $('#event-details-description').text(event.description);
-
-                    // Show the modal
-                    $('#event-details-modal').show();
-                }
-
-                // Function to close the event details modal
-                function closeDetailsModal() {
-                    $('#event-details-modal').hide();
-                }
-
-                // Function to delete an event
-                function deleteEvent() {
-                    if (currentEvent) {
-                        // Remove event from the calendar
-                        $('#calendar').fullCalendar('removeEvents', currentEvent.id);
-
-                        // Remove event from localStorage
-                        let events = JSON.parse(localStorage.getItem('events')) || [];
-                        events = events.filter(event => event.id !== currentEvent.id); // Filter out the event to be deleted
-                        localStorage.setItem('events', JSON.stringify(events));
-
-                        // Reload events from localStorage after deletion
-                        $('#calendar').fullCalendar('removeEvents'); // Remove all events temporarily
-                        $('#calendar').fullCalendar('addEventSource', getStoredEvents()); // Re-add events from localStorage
-
-                        // Close the modal
-                        closeDetailsModal();
-                    }
-                }
-
-                // Attach the add event functionality to the Add Event button
-                $('#addEventBtn').on('click', addEvent);
-
-                // Attach the closeForm function to the close button
-                $('#closeFormBtn').on('click', closeForm);
-
-                // Attach the closeDetailsModal function to the close button in the details modal
-                $('#closeDetailsModal').on('click', closeDetailsModal);
-
-                // Attach the deleteEvent function to the delete button
-                $('#deleteEventBtn').on('click', deleteEvent);
-            });
+            // Attach event handlers
+            $('#addEventBtn').on('click', addEvent);
+            $('#editEventBtn').on('click', editEvent);
+            $('#closeFormBtn').on('click', closeForm);
+            $('#closeDetailsModal').on('click', closeDetailsModal);
+            $('#deleteEventBtn').on('click', deleteEvent);
+        });
+    </script>
 
 
-
-        </script>
 </body>
 </html>

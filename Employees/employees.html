@@ -1,343 +1,475 @@
-x<!DOCTYPE html>
+x
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employees</title>
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        color: #000;
-        transition: background-color 0.3s ease-in-out;
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #000;
+            transition: background-color 0.3s ease-in-out;
+        }
 
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 70px;
-        background-color: #2c3e50;
-        color: #ecf0f1;
-        transition: width 0.3s ease, background-color 0.3s ease-in-out;
-        overflow: hidden;
-        z-index: 2;
-    }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 70px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            transition: width 0.3s ease, background-color 0.3s ease-in-out;
+            overflow: hidden;
+            z-index: 2;
+        }
 
-    .sidebar.open {
-        width: 250px;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    }
+            .sidebar.open {
+                width: 250px;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            }
 
-    .sidebar:hover {
-        width: 250px;
-        background-color: #34495e;
-    }
+            .sidebar:hover {
+                width: 250px;
+                background-color: #34495e;
+            }
 
-    .sidebar h2 {
-        font-size: 1.2em;
-        margin: 20px;
-        display: flex;
-        align-items: center;
-        color: #ecf0f1;
-    }
+            .sidebar h2 {
+                font-size: 1.2em;
+                margin: 20px;
+                display: flex;
+                align-items: center;
+                color: #ecf0f1;
+            }
 
-    .sidebar h2 img {
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-        cursor: pointer;
-    }
+                .sidebar h2 img {
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 10px;
+                    cursor: pointer;
+                }
 
-    .sidebar h2 span {
-        opacity: 0;
-        transform: translateX(-20px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        white-space: nowrap;
-        overflow: hidden;
-    }
+                .sidebar h2 span {
+                    opacity: 0;
+                    transform: translateX(-20px);
+                    transition: opacity 0.3s ease, transform 0.3s ease;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
 
-    .sidebar.open h2 span {
-        opacity: 1;
-        transform: translateX(0);
-    }
+            .sidebar.open h2 span {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
-    .sidebar a {
-        text-decoration: none;
-        color: #bdc3c7;
-        font-size: 1em;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 15px 20px;
-        margin: 10px 0;
-        transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
-        border-radius: 5px;
-    }
+            .sidebar a {
+                text-decoration: none;
+                color: #bdc3c7;
+                font-size: 1em;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 15px 20px;
+                margin: 10px 0;
+                transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+                border-radius: 5px;
+            }
 
-    .sidebar a img {
-        width: 20px;
-        height: 20px;
-    }
+                .sidebar a img {
+                    width: 20px;
+                    height: 20px;
+                }
 
-    .sidebar a span {
-        opacity: 0;
-        transform: translateX(-20px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        white-space: nowrap;
-        overflow: hidden;
-    }
+                .sidebar a span {
+                    opacity: 0;
+                    transform: translateX(-20px);
+                    transition: opacity 0.3s ease, transform 0.3s ease;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
 
-    .sidebar.open a span {
-        opacity: 1;
-        transform: translateX(0);
-    }
+            .sidebar.open a span {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
-    .sidebar a:hover {
-        color: #ecf0f1;
-        background-color: #16a085;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        transform: translateX(5px);  /* Slightly shifts to the right */
-    }
+            .sidebar a:hover {
+                color: #ecf0f1;
+                background-color: #16a085;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                transform: translateX(5px); /* Slightly shifts to the right */
+            }
 
-    .main-content {
-        margin-left: 70px;
-        padding: 20px;
-        transition: margin-left 0.3s ease, background-color 0.3s ease;
-        background-color: #fff;
-        border-radius: 8px;
-        opacity: 0;
-        animation: fadeIn 1s ease-in forwards;
-    }
-
-    .sidebar.open ~ .main-content {
-        margin-left: 250px;
-    }
-
-    @keyframes fadeIn {
-        from {
+        .main-content {
+            margin-left: 70px;
+            padding: 20px;
+            transition: margin-left 0.3s ease, background-color 0.3s ease;
+            background-color: #fff;
+            border-radius: 8px;
             opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
         }
-        to {
-            opacity: 1;
+
+        .sidebar.open ~ .main-content {
+            margin-left: 250px;
         }
-    }
 
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #34495e;
-        padding: 10px 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        border-radius: 20px;
-        animation: fadeIn 0.5s ease-in;
-        margin-bottom: 15px;
-    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
 
-    .header img:first-child {
-        width: 120px;
-        height: auto;
-    }
+            to {
+                opacity: 1;
+            }
+        }
 
-    .header img:last-child {
-        width: 80px;
-        height: auto;
-    }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #34495e;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            animation: fadeIn 0.5s ease-in;
+            margin-bottom: 15px;
+        }
 
-    .header input {
-        flex-grow: 0;
-        width: 300px;
-        padding: 6px 6px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        transition: border 0.3s ease, transform 0.2s ease;
-    }
+        .header img:first-child {
+            width: 120px;
+            height: auto;
+        }
 
-    .header input:focus {
-        border: 1px solid #16a085;
-        transform: scale(1.05);
-    }
+        .header img:last-child {
+            width: 80px;
+            height: auto;
+        }
 
-    .profile-container {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
+        .header input {
+            flex-grow: 0;
+            width: 300px;
+            padding: 6px 6px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border 0.3s ease, transform 0.2s ease;
+        }
 
-    .profile-container .profile-img {
-        width: 30px !important;
-        height: 30px !important;
-        border-radius: 50%;
-        object-fit: cover;
-        margin: 0;
-    }
+        .header input:focus {
+            border: 1px solid #16a085;
+            transform: scale(1.05);
+        }
 
-    .user-name {
-        color: #ecf0f1;
-        font-size: 1em;
-        font-weight: bold;
-    }
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-    .employee-count-box {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 40px;
-    }
+        .profile-container .profile-img {
+            width: 30px !important;
+            height: 30px !important;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0;
+        }
 
-    .employee-count-box div {
-        background-color: #FFF;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        width: 30%;
-        margin-right: 20px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .user-name {
+            color: #ecf0f1;
+            font-size: 1em;
+            font-weight: bold;
+        }
 
-    .employee-count-box div:last-child {
-        margin-right: 0;
-    }
+        .employee-count-box {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
 
-    .employee-count-box div:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
+        .employee-count-box div {
+            background-color: #FFF;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 30%;
+            margin-right: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .employee-count-box div h3 {
-        margin: 10px 0;
-        font-size: 1.2em;
-        color: #2C3E50;
-    }
+        .employee-count-box div:last-child {
+            margin-right: 0;
+        }
 
-    .employee-count-box div p {
-        font-size: 2em;
-        font-weight: bold;
-        color: #16A085;
-    }
+        .employee-count-box div:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
 
-    .department {
-        background-color: #FFF;
-        margin-bottom: 20px;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .employee-count-box div h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #2C3E50;
+        }
 
-    .department h3 {
-        margin-bottom: 15px;
-        cursor: pointer;
-        font-size: 1.2em;
-        color: #16A085;
-        transition: color 0.3s ease;
-    }
+        .employee-count-box div p {
+            font-size: 2em;
+            font-weight: bold;
+            color: #16A085;
+        }
 
-    .department h3:hover {
-        color: #2C3E50;
-        transform: translateX(5px);
-    }
+        .department {
+            background-color: #FFF;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .employee-list {
-        display: none;
-        margin-top: 10px;
-        list-style: none;
-        padding: 0;
-    }
+        .department h3 {
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #16A085;
+            transition: color 0.3s ease;
+        }
 
-    .employee-card {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        border-bottom: 1px solid #E2E2E2;
-        transition: background-color 0.3s ease;
-    }
+        .department h3:hover {
+            color: #2C3E50;
+            transform: translateX(5px);
+        }
 
-    .employee-card img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 15px;
-    }
+        .employee-list {
+            display: none;
+            margin-top: 10px;
+            list-style: none;
+            padding: 0;
+        }
 
-    .employee-card span {
-        display: block;
-        font-size: 1em;
-        color: #34495E;
-    }
+        .employee-card {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #E2E2E2;
+            transition: background-color 0.3s ease;
+        }
 
-    .employee-card span.name {
-        font-weight: bold;
-    }
+        .employee-card img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
 
-    .employee-card span.email {
-        color: #7F8C8D;
-    }
+        .employee-card span {
+            display: block;
+            font-size: 1em;
+            color: #34495E;
+        }
 
-    .employee-card:hover {
-        background-color: #ECF0F1;
-        transform: translateX(5px);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
+        .employee-card span.name {
+            font-weight: bold;
+        }
 
-    .active {
-        display: block;
-    }
+        .employee-card span.email {
+            color: #7F8C8D;
+        }
 
-    .footer {
-        text-align: center;
-        padding: 10px;
-        margin-top: 20px;
-        background-color: #2c3e50;
-        color: #bdc3c7;
-        border-radius: 8px;
-        font-size: 0.9em;
-        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-        transition: margin-left 0.3s ease, opacity 0.5s ease-in;
-        opacity: 0;
-        animation: fadeIn 0.5s ease-in forwards;
-    }
+        .employee-card:hover {
+            background-color: #ECF0F1;
+            transform: translateX(5px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
 
-    .sidebar.open ~ .footer {
-        margin-left: 250px;
-    }
-</style>
+        .active {
+            display: block;
+        }
+
+        /* General container style for centering */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Graph Container */
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            margin-top: 40px;
+        }
+
+        /* Flex container for Graph Type dropdown and Year Selector */
+        .graph-toggle-year {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Graph Type Dropdown */
+        .graph-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Adding space between label and select */
+        }
+
+        label {
+            font-size: 18px;
+            margin-right: 10px;
+            color: #333;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+            margin-right: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Year Selector Container */
+        .year-selector {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Adding space between dropdowns */
+        }
+
+        /* Add spacing around the chart container */
+        .chart-container {
+            margin-top: 30px;
+        }
+
+        /* Tooltip styling for better UI experience */
+        .tooltip {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
+            border-radius: 5px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            margin: 20px 10px 10px 80px;
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            border-radius: 8px;
+            font-size: 0.9em;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            transition: margin-left 0.3s ease, opacity 0.5s ease-in;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        .sidebar.open ~ .footer {
+            margin-left: 250px;
+        }
+    </style>
 
 </head>
-<body><div class="sidebar" id="sidebar">
+<body>
+    <div class="sidebar" id="sidebar">
         <h2>
-    	     <img src="../icons/menu.png" alt="Toggle Sidebar" id="toggleSidebar">
-    	     <span>Advanced Sys-Tek</span>
-	</h2>
-
+            <img src="../icons/menu.png" alt="Toggle Sidebar" id="toggleSidebar">
+            <span>Advanced Sys-Tek</span>
         </h2>
-<hr>
-        <a href="#"><img src="../icons/dashboard-icon.png" alt="Dashboard Icon"> <span>Dashboard</span></a>
-        <a href="../Employees/employees.html"><img src="../icons/employees-icon.png" alt="Employees Icon"> <span>Employees</span></a>
+
+        <hr>
+        <a href="../Homepage/homepage.html"><img src="../icons/dashboard-icon.png" alt="Dashboard Icon"> <span>Dashboard</span></a>
+        <a href="#"><img src="../icons/employees-icon.png" alt="Employees Icon"> <span>Employees</span></a>
         <a href="../Updates/updates.html"><img src="../icons/today-icon.png" alt="Updates Icon"> <span>Today's Updates</span></a>
         <a href="../Townhall meeting/meeting.html"><img src="../icons/meeting-icon.png" alt="Meeting Icon"> <span> Meetings</span></a>
- 	<a href="../Resources/resources.html"><img src="../icons/resources-icon.png" alt="Resources Icon"> <span> Resources</span></a>
-	<a href="../Manuals/manuals.html"><img src="../icons/manual-icon.png" alt="Manual Icon"> <span> Manuals</span></a>
-        <a href="../Policies/policies.html"><img src="../icons/policies-icon.png" alt="Policies Icon"> <span>Policies</span></a>
+        <a href="../Resources/resources.html"><img src="../icons/resources-icon.png" alt="Resources Icon"> <span> Resources</span></a>
+        <a href="../Manuals/manuals.html"><img src="../icons/manual-icon.png" alt="Manual Icon"> <span> Manuals</span></a>
+        <a href="../Achievements/achievements.html"><img src="../icons/policies-icon.png" alt="Policies Icon"> <span>Achievements</span></a>
         <a href="../Events/events.html"><img src="../icons/events-icon.png" alt="Events Icon"> <span>Events</span></a>
         <a href="../login.html"><img src="../icons/logout-icon.png" alt="Log Out Icon"> <span>Log Out</span></a>
     </div>
 
 
-	<div class="main-content">
+    <div class="main-content">
         <div class="header">
             <img src="../icons/AST Logo.png" alt="AST logo">
             <input type="text" placeholder="Search anything...">
 
-             <!-- Profile container -->
-             <div class="profile-container">
+            <!-- Profile container -->
+            <div class="profile-container">
                 <img src="../icons/profile-pic.jfif" alt="Profile Picture" class="profile-img">
                 <span class="user-name">q</span>
-             </div>
+            </div>
         </div>
+
+        <div class="container">
+            <!-- Graph Container Below Header -->
+            <div class="chart-container">
+                <canvas id="employeeChart"></canvas>
+            </div>
+
+            <!-- Dropdown for selecting graph type and year range -->
+            <div class="graph-toggle-year">
+                <div class="graph-toggle">
+                    <label for="graphType" class="tooltip" data-tooltip="Select graph to view either gender distribution or employees per department.">
+                        Select Graph:
+                    </label>
+                    <select id="graphType">
+                        <option value="department">Employees per Department</option>
+                        <option value="gender">Male/Female Distribution</option>
+                    </select>
+                </div>
+
+                <!-- HTML for Year Selection -->
+                <div class="year-selector">
+                    <label for="startYear">Start Year:</label>
+                    <select id="startYear">
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
+
+                    <label for="endYear">End Year:</label>
+                    <select id="endYear">
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <br />
+
         <div class="employee-count-box">
             <div>
                 <h3>Total Employees</h3>
@@ -352,131 +484,271 @@ x<!DOCTYPE html>
                 <p>10</p>
             </div>
         </div>
-       <div class="department">
-    <h3 id="hrDeptToggle">HR Department</h3>
-    <ul class="employee-list" id="hrDeptList">
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">John Doe</span>
-                <span class="email">johndoe@example.com</span>
-            </div>
-        </li>
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">Jane Smith</span>
-                <span class="email">janesmith@example.com</span>
-            </div>
-        </li>
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">Michael Johnson</span>
-                <span class="email">michaelj@example.com</span>
-            </div>
-        </li>
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">Emily Davis</span>
-                <span class="email">emilyd@example.com</span>
-            </div>
-        </li>
-    </ul>
-</div>
 
-<div class="department">
-    <h3 id="itDeptToggle">IT Department</h3>
-    <ul class="employee-list" id="itDeptList">
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">David Green</span>
-                <span class="email">davidg@example.com</span>
-            </div>
-        </li>
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">Sophia Williams</span>
-                <span class="email">sophiaw@example.com</span>
-            </div>
-        </li>
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">James Anderson</span>
-                <span class="email">jamesa@example.com</span>
-            </div>
-        </li>
-    </ul>
-</div>
+        <div class="department">
+            <h3 id="softwareDeptToggle">Software Department</h3>
+            <ul class="employee-list" id="softwareDeptList">
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">David Green</span>
+                        <span class="email">davidg@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Sophia Williams</span>
+                        <span class="email">sophiaw@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">James Anderson</span>
+                        <span class="email">jamesa@example.com</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
-<div class="department">
-    <h3 id="financeDeptToggle">Finance Department</h3>
-    <ul class="employee-list" id="financeDeptList">
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">Olivia Martinez</span>
-                <span class="email">oliviam@example.com</span>
-            </div>
-        </li>
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">Liam Brown</span>
-                <span class="email">liamb@example.com</span>
-            </div>
-        </li>
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">Isabella Clark</span>
-                <span class="email">isabellac@example.com</span>
-            </div>
-        </li>
-    </ul>
-</div>
+        <div class="department">
+            <h3 id="hrDeptToggle">HR Department</h3>
+            <ul class="employee-list" id="hrDeptList">
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">John Doe</span>
+                        <span class="email">johndoe@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Jane Smith</span>
+                        <span class="email">janesmith@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Michael Johnson</span>
+                        <span class="email">michaelj@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Emily Davis</span>
+                        <span class="email">emilyd@example.com</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
-<div class="department">
-    <h3 id="marketingDeptToggle">Marketing Department</h3>
-    <ul class="employee-list" id="marketingDeptList">
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">Ava Wilson</span>
-                <span class="email">avaw@example.com</span>
-            </div>
-        </li>
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">Mason Taylor</span>
-                <span class="email">masont@example.com</span>
-            </div>
-        </li>
-        <li class="employee-card">
-            <img src="../icons/profile-pic.jfif" alt="Employee Image">
-            <div>
-                <span class="name">Ethan Robinson</span>
-                <span class="email">ethanr@example.com</span>
-            </div>
-        </li>
-    </ul>
-</div>
 
-   <footer class="footer">
+        <div class="department">
+            <h3 id="csDeptToggle">Customer Service Department</h3>
+            <ul class="employee-list" id="csDeptList">
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Olivia Martinez</span>
+                        <span class="email">oliviam@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Liam Brown</span>
+                        <span class="email">liamb@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Isabella Clark</span>
+                        <span class="email">isabellac@example.com</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="department">
+            <h3 id="plantOperationDeptToggle">Plant Operation Department</h3>
+            <ul class="employee-list" id="plantOperationDeptList">
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Ava Wilson</span>
+                        <span class="email">avaw@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Mason Taylor</span>
+                        <span class="email">masont@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Ethan Robinson</span>
+                        <span class="email">ethanr@example.com</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="department">
+            <h3 id="financeDeptToggle">Finance & Accounts</h3>
+            <ul class="employee-list" id="financeDeptList">
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Olivia Martinez</span>
+                        <span class="email">oliviam@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Liam Brown</span>
+                        <span class="email">liamb@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Isabella Clark</span>
+                        <span class="email">isabellac@example.com</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="department">
+            <h3 id="salesDeptToggle">Sales & Proposals</h3>
+            <ul class="employee-list" id="salesDeptList">
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Sophia Johnson</span>
+                        <span class="email">sophiaj@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Jack Davis</span>
+                        <span class="email">jackd@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Chloe Adams</span>
+                        <span class="email">chloea@example.com</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="department">
+            <h3 id="businessDevDeptToggle">Business Development</h3>
+            <ul class="employee-list" id="businessDevDeptList">
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Ava Wilson</span>
+                        <span class="email">avaw@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Mason Taylor</span>
+                        <span class="email">masont@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Ethan Robinson</span>
+                        <span class="email">ethanr@example.com</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="department">
+            <h3 id="projectsDeptToggle">Projects</h3>
+            <ul class="employee-list" id="projectsDeptList">
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">David Green</span>
+                        <span class="email">davidg@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Sophia Williams</span>
+                        <span class="email">sophiaw@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">James Anderson</span>
+                        <span class="email">jamesa@example.com</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="department">
+            <h3 id="engineeringDeptToggle">Engineering & Operations</h3>
+            <ul class="employee-list" id="engineeringDeptList">
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">John Doe</span>
+                        <span class="email">johndoe@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Jane Smith</span>
+                        <span class="email">janesmith@example.com</span>
+                    </div>
+                </li>
+                <li class="employee-card">
+                    <img src="../icons/profile-pic.jfif" alt="Employee Image">
+                    <div>
+                        <span class="name">Michael Johnson</span>
+                        <span class="email">michaelj@example.com</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="footer">
         &copy; 2024 Advanced Sys-Tek Limited | Contact Us | Feedback
-   </footer>
+    </footer>
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
         const toggleSidebar = document.getElementById('toggleSidebar');
         const sidebar = document.getElementById('sidebar');
         let isSidebarClicked = false;
 
-        toggleSidebar.addEventListener('click', function() {
+        toggleSidebar.addEventListener('click', function () {
             isSidebarClicked = !isSidebarClicked;
             if (isSidebarClicked) {
                 sidebar.classList.add('open');
@@ -485,37 +757,270 @@ x<!DOCTYPE html>
             }
         });
 
-        sidebar.addEventListener('mouseenter', function() {
+        sidebar.addEventListener('mouseenter', function () {
             if (!isSidebarClicked) {
                 sidebar.classList.add('open');
             }
         });
 
-        sidebar.addEventListener('mouseleave', function() {
+        sidebar.addEventListener('mouseleave', function () {
             if (!isSidebarClicked) {
                 sidebar.classList.remove('open');
             }
         });
 
-        document.getElementById("hrDeptToggle").addEventListener("click", function() {
+        document.getElementById("hrDeptToggle").addEventListener("click", function () {
             var deptList = document.getElementById("hrDeptList");
             deptList.classList.toggle("active");
         });
 
-	document.getElementById("itDeptToggle").addEventListener("click", function() {
-   		var deptList = document.getElementById("itDeptList");
-    		deptList.classList.toggle("active");
-	});
-	
-	document.getElementById("financeDeptToggle").addEventListener("click", function() {
-    		var deptList = document.getElementById("financeDeptList");
-    		deptList.classList.toggle("active");
-	});
+        document.getElementById("softwareDeptToggle").addEventListener("click", function () {
+            var deptList = document.getElementById("softwareDeptList");
+            deptList.classList.toggle("active");
+        });
 
-	document.getElementById("marketingDeptToggle").addEventListener("click", function() {
-    		var deptList = document.getElementById("marketingDeptList");
-    		deptList.classList.toggle("active");
-	});
+        document.getElementById("csDeptToggle").addEventListener("click", function () {
+            var deptList = document.getElementById("csDeptList");
+            deptList.classList.toggle("active");
+        });
+
+        document.getElementById("plantOperationDeptToggle").addEventListener("click", function () {
+            var deptList = document.getElementById("plantOperationDeptList");
+            deptList.classList.toggle("active");
+        });
+        document.getElementById("financeDeptToggle").addEventListener("click", function () {
+            var deptList = document.getElementById("financeDeptList");
+            deptList.classList.toggle("active");
+        });
+
+        document.getElementById("salesDeptToggle").addEventListener("click", function () {
+            var deptList = document.getElementById("salesDeptList");
+            deptList.classList.toggle("active");
+        });
+
+        document.getElementById("businessDevDeptToggle").addEventListener("click", function () {
+            var deptList = document.getElementById("businessDevDeptList");
+            deptList.classList.toggle("active");
+        });
+
+        document.getElementById("projectsDeptToggle").addEventListener("click", function () {
+            var deptList = document.getElementById("projectsDeptList");
+            deptList.classList.toggle("active");
+        });
+
+        document.getElementById("engineeringDeptToggle").addEventListener("click", function () {
+            var deptList = document.getElementById("engineeringDeptList");
+            deptList.classList.toggle("active");
+        });
+
+        // Sample Data for Male/Female Employees per Year
+        const maleFemaleData = {
+            labels: ['2020', '2021', '2022', '2023', '2024'], // Year labels
+            datasets: [
+                {
+                    label: 'Male Employees',
+                    data: [250, 270, 300, 320, 345], // Male employee count per year
+                    borderColor: '#4CAF50',
+                    backgroundColor: '#4CAF50',
+                    fill: false,
+                    tension: 0.1,
+                },
+                {
+                    label: 'Female Employees',
+                    data: [150, 180, 200, 210, 222], // Female employee count per year
+                    borderColor: '#FF4081',
+                    backgroundColor: '#FF4081',
+                    fill: false,
+                    tension: 0.1,
+                },
+            ],
+        };
+
+        // Sample Data for Employees per Department per Year
+        const departmentData = {
+            labels: ['2020', '2021', '2022', '2023', '2024'], // Year labels
+            datasets: [
+                {
+                    label: 'Software Department',
+                    data: [50, 55, 60, 65, 72], // Software department employee count per year
+                    borderColor: '#2196F3',
+                    backgroundColor: '#2196F3',
+                    fill: false,
+                    tension: 0.1,
+                },
+                {
+                    label: 'HR Department',
+                    data: [100, 120, 130, 140, 142], // HR department employee count per year
+                    borderColor: '#FFC107',
+                    backgroundColor: '#FFC107',
+                    fill: false,
+                    tension: 0.1,
+                },
+                {
+                    label: 'Customer Service Department',
+                    data: [75, 80, 85, 90, 105], // Customer Service department employee count per year
+                    borderColor: '#8BC34A',
+                    backgroundColor: '#8BC34A',
+                    fill: false,
+                    tension: 0.1,
+                },
+                {
+                    label: 'Plant Operation Department',
+                    data: [60, 65, 70, 80, 107], // Plant Operation department employee count per year
+                    borderColor: '#FF5722',
+                    backgroundColor: '#FF5722',
+                    fill: false,
+                    tension: 0.1,
+                },
+                {
+                    label: 'Finance & Accounts',
+                    data: [45, 55, 60, 65, 70], // Finance & Accounts department employee count per year
+                    borderColor: '#9C27B0',
+                    backgroundColor: '#9C27B0',
+                    fill: false,
+                    tension: 0.1,
+                },
+                {
+                    label: 'Sales & Proposals',
+                    data: [40, 45, 50, 55, 60], // Sales & Proposals department employee count per year
+                    borderColor: '#03A9F4',
+                    backgroundColor: '#03A9F4',
+                    fill: false,
+                    tension: 0.1,
+                },
+                {
+                    label: 'Business Development',
+                    data: [35, 38, 42, 47, 55], // Business Development department employee count per year
+                    borderColor: '#673AB7',
+                    backgroundColor: '#673AB7',
+                    fill: false,
+                    tension: 0.1,
+                },
+                {
+                    label: 'Projects',
+                    data: [60, 65, 70, 75, 80], // Projects department employee count per year
+                    borderColor: '#FF9800',
+                    backgroundColor: '#FF9800',
+                    fill: false,
+                    tension: 0.1,
+                },
+                {
+                    label: 'Engineering & Operations',
+                    data: [70, 80, 85, 95, 102], // Engineering & Operations department employee count per year
+                    borderColor: '#009688',
+                    backgroundColor: '#009688',
+                    fill: false,
+                    tension: 0.1,
+                },
+            ],
+        };
+
+        // Chart Initialization
+        const ctx = document.getElementById('employeeChart').getContext('2d');
+        let currentChart = null; // Holds the current chart object
+
+        // Create the chart (either Male/Female or Department data)
+        function createChart(data) {
+            if (currentChart) {
+                currentChart.destroy(); // Destroy the previous chart if it exists
+            }
+
+            currentChart = new Chart(ctx, {
+                type: 'bar', // You can change this to 'line','bar', 'radar', etc., depending on the graph style you want
+                data: data, // Pass the selected data (maleFemaleData or departmentData)
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                    },
+                    scales: {
+                        x: {
+                            type: 'category',
+                            title: {
+                                display: true,
+                                text: 'Year', // X-axis label
+                            },
+                            grid: {
+                                display: true,
+                                color: 'rgba(0,0,0,0.1)', // Optional, to make the gridlines less prominent
+                            },
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Number of Employees', // Y-axis label
+                            },
+                            ticks: {
+                                beginAtZero: true, // Start from 0 for better clarity
+                                stepSize: 20, // Adjust the step size as needed
+                            },
+                        },
+                    },
+                },
+            });
+        }
+
+        // Update the chart based on the selected year range
+        function updateChart() {
+            const selectedGraphType = document.getElementById('graphType').value;
+            const startYear = parseInt(document.getElementById('startYear').value);
+            const endYear = parseInt(document.getElementById('endYear').value);
+
+            // Filter the data based on the selected year range
+            const yearLabels = maleFemaleData.labels;
+            const startIndex = yearLabels.indexOf(startYear.toString());
+            const endIndex = yearLabels.indexOf(endYear.toString());
+
+            // If the start year is greater than the end year, return early
+            if (startIndex > endIndex) {
+                alert("Start year cannot be greater than End year.");
+                return;
+            }
+
+            const filteredData = {
+                labels: yearLabels.slice(startIndex, endIndex + 1),
+                datasets: [],
+            };
+
+            // Select the appropriate data based on graph type (gender or department)
+            let dataToDisplay;
+            if (selectedGraphType === 'gender') {
+                // Filter Male/Female data for the selected year range
+                dataToDisplay = maleFemaleData;
+            } else if (selectedGraphType === 'department') {
+                // Filter Department data for the selected year range
+                dataToDisplay = departmentData;
+            }
+
+            // Filter datasets for the selected year range
+            filteredData.datasets = dataToDisplay.datasets.map(dataset => ({
+                ...dataset,
+                data: dataset.data.slice(startIndex, endIndex + 1),
+            }));
+
+            // Update the chart with the new filtered data
+            createChart(filteredData);
+        }
+
+        // Initial chart load
+        createChart(departmentData); // Start with the department data
+
+        // Event listener for dropdown changes (to switch between Male/Female and Department data)
+        const graphTypeSelect = document.getElementById('graphType');
+        const startYearSelect = document.getElementById('startYear');
+        const endYearSelect = document.getElementById('endYear');
+
+        // Add one event listener for each dropdown
+        graphTypeSelect.addEventListener('change', updateChart);
+        startYearSelect.addEventListener('change', updateChart);
+        endYearSelect.addEventListener('change', updateChart);
+
     </script>
 </body>
 </html>

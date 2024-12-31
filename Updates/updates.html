@@ -5,115 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Today's Updates</title>
     <style>
-    body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #000;
-    background-color: #ecf0f1;
-    transition: background-color 0.3s ease-in-out;
-}
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #000;
+            background-color: #ecf0f1;
+            transition: background-color 0.3s ease-in-out;
+        }
 
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 70px;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    transition: width 0.3s ease, background-color 0.3s ease-in-out;
-    overflow: hidden;
-    z-index: 2;
-}
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 70px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            transition: width 0.3s ease, background-color 0.3s ease-in-out;
+            overflow: hidden;
+            z-index: 2;
+        }
 
-.sidebar.open {
-    width: 250px;
-}
+            .sidebar.open {
+                width: 250px;
+            }
 
-.sidebar:hover {
-    width: 250px;
-    background-color: #34495e;
-}
+            .sidebar:hover {
+                width: 250px;
+                background-color: #34495e;
+            }
 
-.sidebar h2 {
-    font-size: 1.2em;
-    margin: 20px;
-    display: flex;
-    align-items: center;
-    color: #ecf0f1;
-}
+            .sidebar h2 {
+                font-size: 1.2em;
+                margin: 20px;
+                display: flex;
+                align-items: center;
+                color: #ecf0f1;
+            }
 
-.sidebar h2 img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    cursor: pointer;
-}
+                .sidebar h2 img {
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 10px;
+                    cursor: pointer;
+                }
 
-.sidebar h2 span {
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    white-space: nowrap;
-    overflow: hidden;
-}
+                .sidebar h2 span {
+                    opacity: 0;
+                    transform: translateX(-20px);
+                    transition: opacity 0.3s ease, transform 0.3s ease;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
 
-.sidebar.open h2 span {
-    opacity: 1;
-    transform: translateX(0);
-}
+            .sidebar.open h2 span {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
-.sidebar a {
-    text-decoration: none;
-    color: #bdc3c7;
-    font-size: 1em;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 15px 20px;
-    margin: 10px 0;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    border-radius: 5px;
-}
+            .sidebar a {
+                text-decoration: none;
+                color: #bdc3c7;
+                font-size: 1em;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 15px 20px;
+                margin: 10px 0;
+                transition: color 0.3s ease, background-color 0.3s ease;
+                border-radius: 5px;
+            }
 
-.sidebar a img {
-    width: 20px;
-    height: 20px;
-}
+                .sidebar a img {
+                    width: 20px;
+                    height: 20px;
+                }
 
-.sidebar a span {
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    white-space: nowrap;
-    overflow: hidden;
-}
+                .sidebar a span {
+                    opacity: 0;
+                    transform: translateX(-20px);
+                    transition: opacity 0.3s ease, transform 0.3s ease;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
 
-.sidebar.open a span {
-    opacity: 1;
-    transform: translateX(0);
-}
+            .sidebar.open a span {
+                opacity: 1;
+                transform: translateX(0);
+            }
 
-.sidebar a:hover {
-    color: #ecf0f1;
-    background-color: #16a085;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+            .sidebar a:hover {
+                color: #ecf0f1;
+                background-color: #16a085;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
 
-.main-content {
-    margin-left: 70px;
-    padding: 20px;
-    transition: margin-left 0.3s ease, background-color 0.3s ease;
-    background-color: #fff;
-    border-radius: 8px;
-    animation: fadeIn 0.5s ease-in;
-}
+        .main-content {
+            margin-left: 70px;
+            padding: 20px;
+            transition: margin-left 0.3s ease, background-color 0.3s ease;
+            background-color: #fff;
+            border-radius: 8px;
+            animation: fadeIn 0.5s ease-in;
+        }
 
-.sidebar.open ~ .main-content {
-    margin-left: 250px;
-}
+        .sidebar.open ~ .main-content {
+            margin-left: 250px;
+        }
+
         .header {
-            display: flex; 
+            display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: #34495e;
@@ -128,6 +129,7 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -152,24 +154,24 @@
             transition: border 0.3s ease;
         }
 
-        .header input:focus {
-            border: 1px solid #16a085;
-        }
+            .header input:focus {
+                border: 1px solid #16a085;
+            }
 
         /* Profile container */
         .profile-container {
             display: flex;
             align-items: center;
-            gap: 10px;  /* Space between profile image and username */
+            gap: 10px; /* Space between profile image and username */
         }
 
-        .profile-container .profile-img {
-            width: 30px !important;    /* Force smaller width */
-            height: 30px !important;   /* Force smaller height */
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0;                 /* Ensure no extra margin */
-        }
+            .profile-container .profile-img {
+                width: 30px !important; /* Force smaller width */
+                height: 30px !important; /* Force smaller height */
+                border-radius: 50%;
+                object-fit: cover;
+                margin: 0; /* Ensure no extra margin */
+            }
 
         .user-name {
             color: #ecf0f1;
@@ -178,122 +180,125 @@
             margin-left: 0;
         }
 
-/* Section Styles */
-.section {
-    margin-top: 20px;
-    background-color: #ecf0f1;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    animation: slideUp 0.5s ease-out;
-}
+        /* Section Styles */
+        .section {
+            margin-top: 20px;
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.5s ease-out;
+        }
 
-@keyframes slideUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
 
-.section h3 {
-    font-size: 1.3em;
-    margin-bottom: 10px;
-    color: #34495e;
-}
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-.section p {
-    font-size: 1em;
-    margin-bottom: 10px;
-}
+        .section h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
 
-.section ul {
-    list-style-type: none;
-    padding-left: 0;
-}
+        .section p {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
 
-.section ul li {
-    margin-bottom: 10px;
-    padding: 8px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
+        .section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
 
-.section ul li:hover {
-    background-color: #16a085;
-    color: #fff;
-}
+            .section ul li {
+                margin-bottom: 10px;
+                padding: 8px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease;
+            }
 
-/* Birthday Animation */
-@keyframes bounceIn {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
+                .section ul li:hover {
+                    background-color: #16a085;
+                    color: #fff;
+                }
 
-.section h3 {
-    font-size: 1.3em;
-    margin-bottom: 10px;
-    color: #34495e;
-}
+        /* Birthday Animation */
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
 
-.section.birthday {
-    animation: bounceIn 1s ease-out;
-    background-color: #f39c12;
-    color: #fff;
-}
-.section.birthday ul li {
-    color: #2c3e50; /* Dark color for text */
-}
+            50% {
+                transform: scale(1.1);
+            }
 
-/* Digital Calendar Styling */
-.digital-calendar {
-    font-size: 2em; /* Increase font size for a larger calendar */
-    font-weight: bold;
-    color: #34495e;
-    padding: 15px 30px; /* Add more padding to make it visually bigger */
-    margin-top: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: fit-content;
-    text-align: center; /* Center text inside the element */
-    margin-left: auto;
-    margin-right: auto; /* Center the calendar horizontally */
-}
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .section h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .section.birthday {
+            animation: bounceIn 1s ease-out;
+            background-color: #f39c12;
+            color: #fff;
+        }
+
+            .section.birthday ul li {
+                color: #2c3e50; /* Dark color for text */
+            }
+
+        /* Digital Calendar Styling */
+        .digital-calendar {
+            font-size: 2em; /* Increase font size for a larger calendar */
+            font-weight: bold;
+            color: #34495e;
+            padding: 15px 30px; /* Add more padding to make it visually bigger */
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: fit-content;
+            text-align: center; /* Center text inside the element */
+            margin-left: auto;
+            margin-right: auto; /* Center the calendar horizontally */
+        }
 
 
-/* Footer */
-.footer {
-    text-align: center;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #2c3e50;
-    color: #bdc3c7;
-    border-radius: 8px;
-    font-size: 0.9em;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: 0px;
-    transition: margin-left 0.3s ease;
-}
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            border-radius: 8px;
+            font-size: 0.9em;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            margin-left: 0px;
+            transition: margin-left 0.3s ease;
+        }
 
-.sidebar.open ~ .footer {
-    margin-left: 250px;
-}
-
+        .sidebar.open ~ .footer {
+            margin-left: 250px;
+        }
     </style>
 </head>
 <body>
@@ -303,15 +308,15 @@
             <span>Advanced Sys-Tek</span>
         </h2>
         <hr>
-        <a href="#"><img src="../icons/dashboard-icon.png" alt="Dashboard Icon"> <span>Dashboard</span></a>
+        <a href="../Homepage/homepage.html"><img src="../icons/dashboard-icon.png" alt="Dashboard Icon"> <span>Dashboard</span></a>
         <a href="../Employees/employees.html"><img src="../icons/employees-icon.png" alt="Employees Icon"> <span>Employees</span></a>
-        <a href="../Updates/updates.html"><img src="../icons/today-icon.png" alt="Updates Icon"> <span>Today's Updates</span></a>
+        <a href="#"><img src="../icons/today-icon.png" alt="Updates Icon"> <span> Updates</span></a>
         <a href="../Townhall meeting/meeting.html"><img src="../icons/meeting-icon.png" alt="Meeting Icon"> <span> Meetings</span></a>
         <a href="../Resources/resources.html"><img src="../icons/resources-icon.png" alt="Resources Icon"> <span> Resources</span></a>
         <a href="../Manuals/manuals.html"><img src="../icons/manual-icon.png" alt="Manual Icon"> <span> Manuals</span></a>
-        <a href="../Policies/policies.html"><img src="../icons/policies-icon.png" alt="Policies Icon"> <span>Policies</span></a>
+        <a href="../Achievements/achievements.html"><img src="../icons/policies-icon.png" alt="Policies Icon"> <span>Achievements</span></a>
         <a href="../Events/events.html"><img src="../icons/events-icon.png" alt="Events Icon"> <span>Events</span></a>
-        <a href="#"><img src="../icons/logout-icon.png" alt="Log Out Icon"> <span>Log Out</span></a>
+        <a href="../login.html"><img src="../icons/logout-icon.png" alt="Log Out Icon"> <span>Log Out</span></a>
     </div>
 
     <div class="main-content">
@@ -319,21 +324,21 @@
             <img src="../icons/AST Logo.png" alt="AST logo">
             <input type="text" placeholder="Search anything...">
 
-             <!-- Profile container -->
-             <div class="profile-container">
+            <!-- Profile container -->
+            <div class="profile-container">
                 <img src="../icons/profile-pic.jfif" alt="Profile Picture" class="profile-img">
                 <span class="user-name">q</span>
-             </div>
+            </div>
         </div>
 
-	<!-- Digital Calendar (Date) -->
-	<div class="digital-calendar" id="digital-calendar"></div>
+        <!-- Digital Calendar (Date) -->
+        <div class="digital-calendar" id="digital-calendar"></div>
 
         <!-- Optional: Quote of the Day -->
         <div class="section">
-    	    <h3>Quote of the Day</h3>
+            <h3>Quote of the Day</h3>
             <p id="quote"></p>
-	</div>
+        </div>
 
         <!-- Birthday Section -->
         <div class="section birthday">
@@ -377,11 +382,11 @@
     <script>
         const toggleSidebar = document.getElementById('toggleSidebar');
         const sidebar = document.getElementById('sidebar');
-        
+
         let isSidebarClicked = false; // Flag to track if sidebar is manually toggled
 
         // Toggle sidebar open/close on click
-        toggleSidebar.addEventListener('click', function() {
+        toggleSidebar.addEventListener('click', function () {
             isSidebarClicked = !isSidebarClicked; // Toggle state
             if (isSidebarClicked) {
                 sidebar.classList.add('open');
@@ -391,77 +396,77 @@
         });
 
         // Handle sidebar hover behavior (only works when not clicked)
-        sidebar.addEventListener('mouseenter', function() {
+        sidebar.addEventListener('mouseenter', function () {
             if (!isSidebarClicked) {
                 sidebar.classList.add('open');
             }
         });
 
-        sidebar.addEventListener('mouseleave', function() {
+        sidebar.addEventListener('mouseleave', function () {
             if (!isSidebarClicked) {
                 sidebar.classList.remove('open');
             }
         });
 
-	function updateDigitalCalendar() {
-    		const calendarElement = document.getElementById('digital-calendar');
-    		const today = new Date();
-    
-    		// Get the current day, month, and year
-    		const day = String(today.getDate()).padStart(2, '0'); // Pad single digit days
-    		const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
-    		const year = today.getFullYear();
-    	
-    		// Set the formatted date in the element
-    		calendarElement.textContent = `${day}/${month}/${year}`;
-	}
+        function updateDigitalCalendar() {
+            const calendarElement = document.getElementById('digital-calendar');
+            const today = new Date();
+
+            // Get the current day, month, and year
+            const day = String(today.getDate()).padStart(2, '0'); // Pad single digit days
+            const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+            const year = today.getFullYear();
+
+            // Set the formatted date in the element
+            calendarElement.textContent = `${day}/${month}/${year}`;
+        }
 
 
-	// Call the function on page load
-	updateDigitalCalendar();
+        // Call the function on page load
+        updateDigitalCalendar();
 
-	 // Array of quotes
-const quotes = [
-    "\"Success is not the key to happiness. Happiness is the key to success.\" - Albert Schweitzer",
-    "\"The only way to do great work is to love what you do.\" - Steve Jobs",
-    "\"The future belongs to those who believe in the beauty of their dreams.\" - Eleanor Roosevelt",
-    "\"In the middle of every difficulty lies opportunity.\" - Albert Einstein",
-    "\"Believe you can and you're halfway there.\" - Theodore Roosevelt",
-    "\"Don't watch the clock; do what it does. Keep going.\" - Sam Levenson",
-    "\"It does not matter how slowly you go as long as you do not stop.\" - Confucius",
-    "\"The best way to predict the future is to create it.\" - Peter Drucker",
-    "\"Your time is limited, don't waste it living someone else's life.\" - Steve Jobs",
-    "\"The only limit to our realization of tomorrow is our doubts of today.\" - Franklin D. Roosevelt",
-    "\"Start where you are. Use what you have. Do what you can.\" – Arthur Ashe",
-    "\"I’m a great believer in luck, and I find the harder I work, the more I have of it.\" – Thomas Jefferson",
-    "\"Challenges are what make life interesting and overcoming them is what makes life meaningful.\" – Joshua J. Marine",
-    "\"The only thing that overcomes hard luck is hard work.\" – Harry Golden",
-    "\"Alone we can do so little. Together we can do so much.\" – Helen Keller",
-    "\"If everyone is moving forward together, then success takes care of itself.\" – Henry Ford",
-    "\"How wonderful it is that nobody needs wait a single moment before starting to improve the world.\" — Anne Frank",
-    "\"The meeting of preparation with opportunity generates the offspring we call luck.\" – Tony Robbins",
-    "\"If you want to go fast, go alone. If you want to go far, go together.\" – African Proverb",
-    "\"A diamond is a piece of coal that stuck to the job.\" – Michael Larsen",
-    "\"It is amazing how much you can accomplish when it doesn’t matter who gets the credit.\" – Harry S. Truman",
-    "\"You can’t use up creativity. The more you use, the more you have.\" – Maya Angelou",
-    "\"Your most important work is always ahead of you, never behind you.\" – Stephen Covey",
-    "\"A dream doesn’t become reality through magic; it takes sweat, determination and hard work.\" – Colin Powell",
-    "\"No great achiever – even those who made it seem easy – ever succeeded without hard work.\" – Jonathan Sack",
-    "\"The way to get started is to quit talking and begin doing.\" – Walt Disney Company",
-    "\"All growth depends upon activity. There is no development physically or intellectually without effort, and effort means work.\" – Calvin Coolidge",
-    "\"There are no shortcuts to any place worth going.\" – Beverly Sills",
-    "\"The only place where success comes before work is in the dictionary.\" – Vidal Sassoon",
-    "\"We are what we repeatedly do. Excellence, therefore, is not an act but a habit.\" – Aristotle",
-    "\"A boat doesn’t go forward if each one is rowing their own way.\" – Proverb",
-    "\"If you can’t fly, then run; if you can’t run, then walk; if you can’t walk, then crawl, but whatever you do, you have to keep moving forward.\" – Martin Luther King Jr.",
-    "\"I attribute my success to this: I never gave or took any excuse.\" – Florence Nightingale",
-    "\"We may encounter many defeats, but we must not be defeated.\" – Maya Angelou",
-    "\"If you are working on something that you really care about, you don’t have to be pushed. The vision pulls you.\" – Steve Jobs",
-    "\"If your dream is a big dream, and if you want your life to work on the high level that you say you do, there’s no way around doing the work it takes to get you there.\" – Joyce Chapman",
-    "\"Limitations live only in our minds. But if we use our imaginations, our possibilities become limitless.\" — Jamie Paolinetti"
-];
+        // Array of quotes
+        const quotes = [
+            "\"Success is not the key to happiness. Happiness is the key to success.\" - Albert Schweitzer",
+            "\"The only way to do great work is to love what you do.\" - Steve Jobs",
+            "\"The future belongs to those who believe in the beauty of their dreams.\" - Eleanor Roosevelt",
+            "\"In the middle of every difficulty lies opportunity.\" - Albert Einstein",
+            "\"Believe you can and you're halfway there.\" - Theodore Roosevelt",
+            "\"Don't watch the clock; do what it does. Keep going.\" - Sam Levenson",
+            "\"It does not matter how slowly you go as long as you do not stop.\" - Confucius",
+            "\"The best way to predict the future is to create it.\" - Peter Drucker",
+            "\"Your time is limited, don't waste it living someone else's life.\" - Steve Jobs",
+            "\"The only limit to our realization of tomorrow is our doubts of today.\" - Franklin D. Roosevelt",
+            "\"Start where you are. Use what you have. Do what you can.\" – Arthur Ashe",
+            "\"I’m a great believer in luck, and I find the harder I work, the more I have of it.\" – Thomas Jefferson",
+            "\"Challenges are what make life interesting and overcoming them is what makes life meaningful.\" – Joshua J. Marine",
+            "\"The only thing that overcomes hard luck is hard work.\" – Harry Golden",
+            "\"Alone we can do so little. Together we can do so much.\" – Helen Keller",
+            "\"If everyone is moving forward together, then success takes care of itself.\" – Henry Ford",
+            "\"How wonderful it is that nobody needs wait a single moment before starting to improve the world.\" — Anne Frank",
+            "\"The meeting of preparation with opportunity generates the offspring we call luck.\" – Tony Robbins",
+            "\"If you want to go fast, go alone. If you want to go far, go together.\" – African Proverb",
+            "\"A diamond is a piece of coal that stuck to the job.\" – Michael Larsen",
+            "\"It is amazing how much you can accomplish when it doesn’t matter who gets the credit.\" – Harry S. Truman",
+            "\"You can’t use up creativity. The more you use, the more you have.\" – Maya Angelou",
+            "\"Your most important work is always ahead of you, never behind you.\" – Stephen Covey",
+            "\"A dream doesn’t become reality through magic; it takes sweat, determination and hard work.\" – Colin Powell",
+            "\"No great achiever – even those who made it seem easy – ever succeeded without hard work.\" – Jonathan Sack",
+            "\"The way to get started is to quit talking and begin doing.\" – Walt Disney Company",
+            "\"All growth depends upon activity. There is no development physically or intellectually without effort, and effort means work.\" – Calvin Coolidge",
+            "\"There are no shortcuts to any place worth going.\" – Beverly Sills",
+            "\"The only place where success comes before work is in the dictionary.\" – Vidal Sassoon",
+            "\"We are what we repeatedly do. Excellence, therefore, is not an act but a habit.\" – Aristotle",
+            "\"A boat doesn’t go forward if each one is rowing their own way.\" – Proverb",
+            "\"If you can’t fly, then run; if you can’t run, then walk; if you can’t walk, then crawl, but whatever you do, you have to keep moving forward.\" – Martin Luther King Jr.",
+            "\"I attribute my success to this: I never gave or took any excuse.\" – Florence Nightingale",
+            "\"We may encounter many defeats, but we must not be defeated.\" – Maya Angelou",
+            "\"If you are working on something that you really care about, you don’t have to be pushed. The vision pulls you.\" – Steve Jobs",
+            "\"If your dream is a big dream, and if you want your life to work on the high level that you say you do, there’s no way around doing the work it takes to get you there.\" – Joyce Chapman",
+            "\"Limitations live only in our minds. But if we use our imaginations, our possibilities become limitless.\" — Jamie Paolinetti"
+        ];
 
-       // Get today's date (get the day of the year)
+        // Get today's date (get the day of the year)
         const today = new Date();
         const start = new Date(today.getFullYear(), 0, 0); // January 1st
         const diff = today - start; // Difference in milliseconds
@@ -474,6 +479,5 @@ const quotes = [
         // Display the quote in the element with id "quote"
         document.getElementById("quote").innerText = quoteOfTheDay;
     </script>
-
 </body>
 </html>
