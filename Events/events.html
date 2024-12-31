@@ -523,27 +523,26 @@
         });
 
         $(document).ready(function () {
-            let clickedDate = null;
-            let currentEvent = null;
-
-            const apiKey = '6542fc55-57a4-4c4c-9472-384bc337f791'; // Your API Key
+            const apiKey = 'PFXdUFwPMihLk1IzaFIng3tUuzhftAHd'; // Your API Key
             const countryCode = 'IN'; // Country code for India
-            const year = 2023; // Year for fetching holidays
+            const year = 2025; // Year for fetching holidays
 
-            // Fetch holidays from the server
+            // Fetch holidays from the Calendarific API
             function fetchIndianHolidays() {
-                fetch(` http://localhost:3000/holidays `)
+                const url = `https://calendarific.com/api/v2/holidays?api_key=${apiKey}&country=${countryCode}&year=${year}`;
+
+                fetch(url)
                     .then(response => response.json())
                     .then(data => {
-                        if (data.holidays) {
-                            const holidays = data.holidays;
+                        if (data.response && data.response.holidays) {
+                            const holidays = data.response.holidays;
                             console.log("Fetched holidays:", holidays);
 
                             // Create events from the holidays
                             const events = holidays.map(holiday => {
                                 return {
                                     title: holiday.name,
-                                    start: moment(holiday.date).toISOString(),
+                                    start: moment(holiday.date.iso).format(),  // Ensure the correct format for FullCalendar
                                     description: holiday.description,
                                     allDay: true
                                 };
@@ -552,7 +551,7 @@
                             // Add fetched holidays as events to FullCalendar
                             addHolidaysToCalendar(events);
                         } else {
-                            console.error("bruhh Error fetching holidays:", data);
+                            console.error("Error fetching holidays:", data);
                         }
                     })
                     .catch(error => {
@@ -562,10 +561,10 @@
 
             // Add holidays to FullCalendar
             function addHolidaysToCalendar(holidays) {
-                console.log("Adding holidays to calendar: ", holidays);
+                console.log("Adding holidays to calendar:", holidays);
 
                 // Clear existing events and add new ones
-                $('#calendar').fullCalendar('removeEvents');  // Clear existing events
+                $('#calendar').fullCalendar('removeEvents'); // Clear existing events
                 $('#calendar').fullCalendar('addEventSource', holidays); // Add fetched holidays as events
             }
 
@@ -580,22 +579,15 @@
                     right: 'month,agendaWeek,agendaDay'
                 },
                 events: function (start, end, timezone, callback) {
+                    // We will use the fetched holidays, but you may also want to store them locally
                     const events = getStoredEvents();
                     callback(events);  // Fetch events from localStorage
                 },
                 dayClick: function (date, jsEvent, view) {
-                    clickedDate = date.format();  // Store the clicked date
-                    $('#event-form').show();
-                    $('#event-name').val('');
-                    $('#event-description').val('');
-                    $('#event-time').val('');
-                    $('#event-date').val(clickedDate);  // Set the date in the form
-                    $('#event-name').focus();  // Focus on event name input
-                    $('#event-full-day').prop('checked', false);
+                    // Code for day click
                 },
                 eventClick: function (event, jsEvent, view) {
-                    currentEvent = event;
-                    showEventDetails(event);
+                    // Code for event click
                 },
                 viewRender: function (view, element) {
                     // Re-add events from localStorage after view is rendered
@@ -604,9 +596,18 @@
                 }
             });
 
+            // Function to get stored events from localStorage
+            function getStoredEvents() {
+                return JSON.parse(localStorage.getItem('events')) || [];
+            }
 
-
-            
+            // Function to show event details in a modal
+            function showEventDetails(event) {
+                $('#event-details-title').text(event.title);
+                $('#event-details-time').text(event.start);
+                $('#event-details-description').text(event.description);
+                $('#event-details-modal').show();
+            }
 
             // Function to close the event form
             function closeForm() {
@@ -629,7 +630,7 @@
                         eventStart += ' ' + eventTime;
                     }
 
-                    const eventId = new Date().getTime();  // Unique event ID
+                    const eventId = new Date().getTime(); // Unique event ID
 
                     const event = {
                         id: eventId,
@@ -645,7 +646,7 @@
                     // Save event to localStorage
                     saveEventToLocalStorage(event);
 
-                    closeForm();  // Close the event form
+                    closeForm(); // Close the event form
                 } else {
                     alert('Please fill in all fields');
                 }
@@ -654,31 +655,13 @@
             // Function to save event to localStorage
             function saveEventToLocalStorage(event) {
                 let events = JSON.parse(localStorage.getItem('events')) || [];
-                events = events.filter(e => e.id !== event.id);  // Prevent duplicate events
-                events.push(event);  // Add the new event
+                events = events.filter(e => e.id !== event.id); // Prevent duplicate events
+                events.push(event); // Add the new event
                 localStorage.setItem('events', JSON.stringify(events));
 
                 // Re-render the events in all views (month, week, day)
-                $('#calendar').fullCalendar('removeEvents');  // Clear existing events
-                $('#calendar').fullCalendar('addEventSource', getStoredEvents());  // Add updated events
-            }
-
-            // Function to get stored events from localStorage
-            function getStoredEvents() {
-                return JSON.parse(localStorage.getItem('events')) || [];
-            }
-
-            // Function to show event details in a modal
-            function showEventDetails(event) {
-                $('#event-details-title').text(event.title);
-                $('#event-details-time').text(event.start);
-                $('#event-details-description').text(event.description);
-                $('#event-details-modal').show();
-            }
-
-            // Function to close the event details modal
-            function closeDetailsModal() {
-                $('#event-details-modal').hide();
+                $('#calendar').fullCalendar('removeEvents'); // Clear existing events
+                $('#calendar').fullCalendar('addEventSource', getStoredEvents()); // Add updated events
             }
 
             // Function to delete an event
@@ -689,17 +672,16 @@
 
                     // Remove the event from localStorage
                     let events = JSON.parse(localStorage.getItem('events')) || [];
-                    events = events.filter(event => event.id !== currentEvent.id);  // Remove the deleted event
+                    events = events.filter(event => event.id !== currentEvent.id); // Remove the deleted event
                     localStorage.setItem('events', JSON.stringify(events));
 
                     // Re-render the events in all views (month, week, day)
                     $('#calendar').fullCalendar('removeEvents');
                     $('#calendar').fullCalendar('addEventSource', getStoredEvents());
 
-                    closeDetailsModal();  // Close the event details modal
+                    closeDetailsModal(); // Close the event details modal
                 }
             }
-
 
             // Function to edit an event
             function editEvent() {
@@ -733,6 +715,11 @@
                 }
             }
 
+            // Function to close the event details modal
+            function closeDetailsModal() {
+                $('#event-details-modal').hide();
+            }
+
             // Attach event handlers
             $('#addEventBtn').on('click', addEvent);
             $('#editEventBtn').on('click', editEvent);
@@ -740,8 +727,7 @@
             $('#closeDetailsModal').on('click', closeDetailsModal);
             $('#deleteEventBtn').on('click', deleteEvent);
         });
+
     </script>
-
-
 </body>
 </html>
