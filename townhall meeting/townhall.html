@@ -25,79 +25,88 @@
             z-index: 2;
         }
 
-            .sidebar.open {
-                width: 250px;
-            }
+        .sidebar.open {
+            width: 250px;
+        }
 
-            .sidebar:hover {
-                width: 250px;
-                background-color: #34495e;
-            }
+        .sidebar:hover {
+            width: 250px;
+            background-color: #34495e;
+        }
 
-            .sidebar h2 {
-                font-size: 1.2em;
-                margin: 20px;
-                display: flex;
-                align-items: center;
-                color: #ecf0f1;
-            }
+        .sidebar h2 {
+            font-size: 1.2em;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            color: #ecf0f1;
+        }
 
-                .sidebar h2 img {
-                    width: 30px;
-                    height: 30px;
-                    margin-right: 10px;
-                    cursor: pointer;
-                }
+        .sidebar h2 img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
 
-                .sidebar h2 span {
-                    opacity: 0;
-                    transform: translateX(-20px);
-                    transition: opacity 0.3s ease, transform 0.3s ease;
-                    white-space: nowrap;
-                    overflow: hidden;
-                }
+        .sidebar h2 span {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+        }
 
-            .sidebar.open h2 span {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .sidebar.open h2 span {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-            .sidebar a {
-                text-decoration: none;
-                color: #bdc3c7;
-                font-size: 1em;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                padding: 15px 20px;
-                margin: 10px 0;
-                transition: color 0.3s ease, background-color 0.3s ease;
-                border-radius: 5px;
-            }
+        .sidebar a {
+            text-decoration: none;
+            color: #bdc3c7;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Increase gap between image and text */
+            padding: 15px 20px;
+            margin: 10px 0;
+            transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+            border-radius: 5px;
+        }
 
-                .sidebar a img {
-                    width: 20px;
-                    height: 20px;
-                }
+        .sidebar a img {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+            transform-origin: center; /* Keep zoom at the center of the icon */
+        }
 
-                .sidebar a span {
-                    opacity: 0;
-                    transform: translateX(-20px);
-                    transition: opacity 0.3s ease, transform 0.3s ease;
-                    white-space: nowrap;
-                    overflow: hidden;
-                }
+        .sidebar a span {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+        }
 
-            .sidebar.open a span {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .sidebar.open a span {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-            .sidebar a:hover {
-                color: #ecf0f1;
-                background-color: #16a085;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            }
+        /* Zoom-in and Zoom-out effect for both image and text */
+        .sidebar a:hover img,
+        .sidebar a:hover span {
+            transform: scale(1.2); /* Zoom in both image and text */
+        }
+
+        .sidebar a:hover {
+            color: #ecf0f1;
+            background-color: #16a085;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
 
         .main-content {
             margin-left: 70px;
@@ -152,9 +161,9 @@
             transition: border 0.3s ease;
         }
 
-            .header input:focus {
-                border: 1px solid #16a085;
-            }
+        .header input:focus {
+            border: 1px solid #16a085;
+        }
 
         /* Profile container */
         .profile-container {
@@ -163,13 +172,13 @@
             gap: 10px; /* Space between profile image and username */
         }
 
-            .profile-container .profile-img {
-                width: 30px !important; /* Force smaller width */
-                height: 30px !important; /* Force smaller height */
-                border-radius: 50%;
-                object-fit: cover;
-                margin: 0; /* Ensure no extra margin */
-            }
+        .profile-container .profile-img {
+            width: 30px !important; /* Force smaller width */
+            height: 30px !important; /* Force smaller height */
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0; /* Ensure no extra margin */
+        }
 
         .user-name {
             color: #ecf0f1;
@@ -177,6 +186,52 @@
             font-weight: bold;
             margin-left: 0;
         }
+
+        .agenda,
+        .live-qa,
+        .polls {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .agenda:hover,
+            .live-qa:hover,
+            .polls:hover {
+                transform: translateY(-10px);
+            }
+
+            .agenda h3,
+            .live-qa h3,
+            .polls h3 {
+                font-size: 1.5em;
+                margin-bottom: 15px;
+                color: #34495e;
+            }
+
+            .agenda ul {
+                list-style-type: none;
+                padding-left: 0;
+            }
+
+                .agenda ul li {
+                    margin: 10px 0;
+                }
+
+        .qa-input {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            transition: border 0.3s ease;
+        }
+
+            .qa-input:focus {
+                border: 1px solid #16a085;
+            }
 
         .footer {
             text-align: center;
@@ -223,6 +278,34 @@
                 <span class="user-name">q</span>
             </div>
         </div>
+
+        <div class="content-container">
+            <div class="agenda">
+                <h3>Agenda</h3>
+                <ul>
+                    <li>Welcome and Introduction</li>
+                    <li>Company Performance Overview</li>
+                    <li>Upcoming Projects</li>
+                    <li>Employee Feedback Session</li>
+                    <li>Q&A</li>
+                </ul>
+            </div>
+
+            <div class="live-qa">
+                <h3>Live Q&A</h3>
+                <textarea class="qa-input" placeholder="Ask your questions here..."></textarea>
+                <button>Submit</button>
+            </div>
+
+            <div class="polls">
+                <h3>Poll: What topic would you like to focus on?</h3>
+                <input type="radio" id="topic1" name="poll" value="topic1"><label for="topic1">Company Performance</label><br>
+                <input type="radio" id="topic2" name="poll" value="topic2"><label for="topic2">Upcoming Projects</label><br>
+                <input type="radio" id="topic3" name="poll" value="topic3"><label for="topic3">Employee Feedback</label><br>
+                <button>Vote</button>
+            </div>
+        </div>
+
 
         <footer class="footer">
             &copy; 2024 Advanced Sys-Tek Limited | Contact Us | Feedback

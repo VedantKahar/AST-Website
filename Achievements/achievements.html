@@ -18,7 +18,7 @@
             left: 0;
             height: 100vh;
             width: 70px;
-            background-color: #2c3e50;
+            background-color: #476481;
             color: #ecf0f1;
             transition: width 0.3s ease, background-color 0.3s ease-in-out;
             overflow: hidden;
@@ -171,12 +171,88 @@
                 margin: 0; /* Ensure no extra margin */
             }
 
+        /* Achievements Section */
+        .achievements-section {
+            margin-top: 20px;
+        }
+
+        .achievement-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+            .achievement-card img {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+                border-radius: 8px;
+                margin-bottom: 15px;
+            }
+
+            .achievement-card h3 {
+                font-size: 1.5em;
+                color: #2c3e50;
+                margin-bottom: 10px;
+            }
+
+            .achievement-card p {
+                color: #7f8c8d;
+                text-align: center;
+                font-size: 1em;
+            }
+
+        /* Competition Winners Section */
+        .competition-section {
+            margin-top: 40px;
+        }
+
+        .competition-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+            .competition-card img {
+                width: 120px;
+                height: 120px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-right: 20px;
+            }
+
+            .competition-card div {
+                flex-grow: 1;
+            }
+
+            .competition-card h4 {
+                font-size: 1.4em;
+                color: #16a085;
+                margin-bottom: 5px;
+            }
+
+            .competition-card span {
+                color: #7f8c8d;
+            }
+
         .user-name {
             color: #ecf0f1;
             font-size: 1em;
             font-weight: bold;
             margin-left: 0;
         }
+
+        
 
         .footer {
             text-align: center;
@@ -202,13 +278,13 @@
             <span>Advanced Sys-Tek</span>
         </h2>
         <hr>
-        <a href="../Homepage/homepage.html"><img src="../icons/dashboard-icon.png" alt="Dashboard Icon"> <span>Dashboard</span></a>
+        <a href="#"><img src="../icons/dashboard-icon.png" alt="Dashboard Icon"> <span>Dashboard</span></a>
         <a href="../Employees/employees.html"><img src="../icons/employees-icon.png" alt="Employees Icon"> <span>Employees</span></a>
         <a href="../Updates/updates.html"><img src="../icons/today-icon.png" alt="Updates Icon"> <span>Today's Updates</span></a>
-        <a href="../Townhall meeting/townhall.html"><img src="../icons/meeting-icon.png" alt="Meeting Icon"> <span> Town Hall</span></a>
+        <a href="../Townhall meeting/meeting.html"><img src="../icons/meeting-icon.png" alt="Meeting Icon"> <span> Town Hall</span></a>
         <a href="../Resources/resources.html"><img src="../icons/resources-icon.png" alt="Resources Icon"> <span> Resources</span></a>
         <a href="../Manuals/manuals.html"><img src="../icons/manual-icon.png" alt="Manual Icon"> <span> Manuals</span></a>
-        <a href=".#"><img src="../icons/achievements-icon.png" alt="achievements Icon"> <span>Achievements</span></a>
+        <a href="../Achievements/achievements.html"><img src="../icons/achievements-icon.png" alt="achievements Icon"> <span>Achievements</span></a>
         <a href="../Policies/policies.html"><img src="../icons/policies-icon.png" alt="policies Icon"> <span>Policies</span></a>
         <a href="../Events/events.html"><img src="../icons/events-icon.png" alt="Events Icon"> <span>Events</span></a>
         <a href="../login.html"><img src="../icons/logout-icon.png" alt="Log Out Icon"> <span>Log Out</span></a>
@@ -221,6 +297,55 @@
             <div class="profile-container">
                 <img src="../icons/profile-pic.jfif" alt="Profile Picture" class="profile-img">
                 <span class="user-name">q</span>
+            </div>
+        </div>
+
+        <div class="achievements-section">
+            <!-- Company Achievements -->
+            <div class="achievement-card">
+                <img src="../icons/AST bg.jfif" alt="Company Achievement">
+                <h3>Company Achievement 1</h3>
+                <p>Details about the achievement. This can include awards or recognitions received by the company.</p>
+            </div>
+            <div class="achievement-card">
+                <img src="../images/company-achievement2.jpg" alt="Company Achievement">
+                <h3>Company Achievement 2</h3>
+                <p>Details about another company achievement.</p>
+            </div>
+        </div>
+
+        <div class="competition-section">
+            <h2>Competition Winners</h2>
+            <div class="competition-card">
+                <img src="../images/cricket-winner.jpg" alt="Cricket Winner">
+                <div>
+                    <h4>Cricket - Sports Week</h4>
+                    <span>Winner: John Doe</span>
+                </div>
+            </div>
+
+            <div class="competition-card">
+                <img src="../images/carrom-winner.jpg" alt="Carrom Winner">
+                <div>
+                    <h4>Carrom - Sports Week</h4>
+                    <span>Winner: Jane Smith</span>
+                </div>
+            </div>
+
+            <div class="competition-card">
+                <img src="../images/volleyball-winner.jpg" alt="Volleyball Winner">
+                <div>
+                    <h4>Volleyball - Sports Week</h4>
+                    <span>Winner: Mark Johnson</span>
+                </div>
+            </div>
+
+            <div class="competition-card">
+                <img src="../images/table-tennis-winner.jpg" alt="Table Tennis Winner">
+                <div>
+                    <h4>Table Tennis - Sports Week</h4>
+                    <span>Winner: Emily Davis</span>
+                </div>
             </div>
         </div>
 
@@ -279,8 +404,6 @@
         sidebar.addEventListener('mouseenter', hoverOpen);
         sidebar.addEventListener('mouseleave', hoverClose);
     </script>
-
-
     
 </body>
 </html>
