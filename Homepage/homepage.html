@@ -596,10 +596,11 @@
         <a href="#"><img src="../icons/dashboard-icon.png" alt="Dashboard Icon"> <span>Dashboard</span></a>
         <a href="../Employees/employees.html"><img src="../icons/employees-icon.png" alt="Employees Icon"> <span>Employees</span></a>
         <a href="../Updates/updates.html"><img src="../icons/today-icon.png" alt="Updates Icon"> <span>Today's Updates</span></a>
-        <a href="../Townhall meeting/meeting.html"><img src="../icons/meeting-icon.png" alt="Meeting Icon"> <span> Meetings</span></a>
+        <a href="../Townhall meeting/townhall.html"><img src="../icons/meeting-icon.png" alt="Meeting Icon"> <span> Town Hall</span></a>
         <a href="../Resources/resources.html"><img src="../icons/resources-icon.png" alt="Resources Icon"> <span> Resources</span></a>
         <a href="../Manuals/manuals.html"><img src="../icons/manual-icon.png" alt="Manual Icon"> <span> Manuals</span></a>
-        <a href="../Achievements/achievements.html"><img src="../icons/policies-icon.png" alt="achievements Icon"> <span>Achievements</span></a>
+        <a href="../Achievements/achievements.html"><img src="../icons/achievements-icon.png" alt="achievements Icon"> <span>Achievements</span></a>
+        <a href="../Policies/policies.html"><img src="../icons/policies-icon.png" alt="policies Icon"> <span>Policies</span></a>
         <a href="../Events/events.html"><img src="../icons/events-icon.png" alt="Events Icon"> <span>Events</span></a>
         <a href="../login.html"><img src="../icons/logout-icon.png" alt="Log Out Icon"> <span>Log Out</span></a>
     </div>
@@ -621,9 +622,9 @@
             <div class="hero-content">
                 <h1>Advanced Sys-Tek Limited</h1>
                 <p>
-                    Advanced Sys-Tek Limited is a leading innovator in the Oil & Gas industry,
+                    Advanced Sys-Tek Limited is a leading innovator in the Oil & Gas industry,<br />
                     specializing in Fluid Metering and Terminal Automation Systems.
-                </p>
+                </p>             
                 <p>
                     Headquartered in India with a growing global presence, we deliver turnkey solutions
                     in Measurement, Control, and Automation through expert system integration, manufacturing,
@@ -756,14 +757,18 @@
                     <a href="https://link-to-event1.com" target="_blank">
                         <img src="https://media.licdn.com/dms/image/v2/D4D22AQGobAIxlOHYKg/feedshare-shrink_800/feedshare-shrink_800/0/1729238416221?e=2147483647&v=beta&t=rlgNJodfrokBuBaLoj-Ghu56o9QtbA2H0zBIQI0fq4Y" alt="Garba">
                         <h3 class="event-title">Garba</h3>
-                        <p class="event-description">A lively traditional dance event celebrating the festival of Navratri.</p>
+                        <p class="event-description">
+                            A lively traditional dance event celebrating the festival of Navratri. 
+                        </p>
                     </a>
                 </div>
                 <div class="event-item">
                     <a href="https://link-to-event2.com" target="_blank">
                         <img src="https://media.licdn.com/dms/image/v2/D4D22AQGeeOIbO_5Cnw/feedshare-shrink_800/feedshare-shrink_800/0/1727068347298?e=2147483647&v=beta&t=lMaagA73msBfbfGEvnKA1IUZbhCkrlUFzlshW1C_RHQ" alt="BVM Industrial Visit">
                         <h3 class="event-title">BVM Industrial Visit</h3>
-                        <p class="event-description">A tour to explore industrial advancements and innovations.</p>
+                        <p class="event-description">
+                            A tour to explore industrial advancements and innovations.
+                        </p>
                     </a>
                 </div>
                 <div class="event-item">
@@ -791,25 +796,46 @@
         // Toggle sidebar open/close on click
         toggleSidebar.addEventListener('click', function () {
             isSidebarClicked = !isSidebarClicked; // Toggle state
+
             if (isSidebarClicked) {
-                sidebar.classList.add('open');
+                sidebar.classList.add('open'); // Open the sidebar
+                sidebar.style.width = '250px'; // Explicitly set width when open
             } else {
-                sidebar.classList.remove('open');
+                sidebar.classList.remove('open'); // Close the sidebar
+                sidebar.style.width = '70px'; // Explicitly set width when closed
+            }
+
+            // Remove hover event listeners when sidebar is manually toggled
+            sidebar.removeEventListener('mouseenter', hoverOpen);
+            sidebar.removeEventListener('mouseleave', hoverClose);
+
+            // Re-enable hover effect only when sidebar is closed
+            if (!isSidebarClicked) {
+                // Only re-enable hover when sidebar is closed
+                sidebar.addEventListener('mouseenter', hoverOpen);
+                sidebar.addEventListener('mouseleave', hoverClose);
             }
         });
 
-        // Handle sidebar hover behavior (only works when not clicked)
-        sidebar.addEventListener('mouseenter', function () {
-            if (!isSidebarClicked) {
+        // Hover behavior for opening the sidebar
+        function hoverOpen() {
+            if (!isSidebarClicked) { // Only open on hover if not manually toggled
                 sidebar.classList.add('open');
+                sidebar.style.width = '250px'; // Ensure the sidebar is open on hover
             }
-        });
+        }
 
-        sidebar.addEventListener('mouseleave', function () {
-            if (!isSidebarClicked) {
+        // Hover behavior for closing the sidebar
+        function hoverClose() {
+            if (!isSidebarClicked) { // Only close on hover if not manually toggled
                 sidebar.classList.remove('open');
+                sidebar.style.width = '70px'; // Ensure the sidebar is closed on hover
             }
-        });
+        }
+
+        // Initially enable hover effect only when sidebar is closed
+        sidebar.addEventListener('mouseenter', hoverOpen);
+        sidebar.addEventListener('mouseleave', hoverClose);
     </script>
 </body>
 </html>

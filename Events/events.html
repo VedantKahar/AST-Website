@@ -413,12 +413,13 @@
         <hr>
         <a href="../Homepage/homepage.html"><img src="../icons/dashboard-icon.png" alt="Dashboard Icon"> <span>Dashboard</span></a>
         <a href="../Employees/employees.html"><img src="../icons/employees-icon.png" alt="Employees Icon"> <span>Employees</span></a>
-        <a href="../Updates/updates.html"><img src="../icons/today-icon.png" alt="Updates Icon"> <span> Updates</span></a>
-        <a href="../Townhall meeting/meeting.html"><img src="../icons/meeting-icon.png" alt="Meeting Icon"> <span> Meetings</span></a>
+        <a href="../Updates/updates.html"><img src="../icons/today-icon.png" alt="Updates Icon"> <span>Today's Updates</span></a>
+        <a href="../Townhall meeting/townhall.html"><img src="../icons/meeting-icon.png" alt="Meeting Icon"> <span> Town Hall</span></a>
         <a href="../Resources/resources.html"><img src="../icons/resources-icon.png" alt="Resources Icon"> <span> Resources</span></a>
         <a href="../Manuals/manuals.html"><img src="../icons/manual-icon.png" alt="Manual Icon"> <span> Manuals</span></a>
-        <a href="../Achievements/achievements.html"><img src="../icons/policies-icon.png" alt="Policies Icon"> <span>Achievements</span></a>
-        <a href="../Events/events.html"><img src="../icons/events-icon.png" alt="Events Icon"> <span>Events</span></a>
+        <a href="../Achievements/achievements.html"><img src="../icons/achievements-icon.png" alt="achievements Icon"> <span>Achievements</span></a>
+        <a href="../Policies/policies.html"><img src="../icons/policies-icon.png" alt="policies Icon"> <span>Policies</span></a>
+        <a href="#"><img src="../icons/events-icon.png" alt="Events Icon"> <span>Events</span></a>
         <a href="../login.html"><img src="../icons/logout-icon.png" alt="Log Out Icon"> <span>Log Out</span></a>
     </div>
 
@@ -499,28 +500,52 @@
     <script>
         const toggleSidebar = document.getElementById('toggleSidebar');
         const sidebar = document.getElementById('sidebar');
-        let isSidebarClicked = false;
 
+        let isSidebarClicked = false; // Flag to track if sidebar is manually toggled
+
+        // Toggle sidebar open/close on click
         toggleSidebar.addEventListener('click', function () {
-            isSidebarClicked = !isSidebarClicked;
+            isSidebarClicked = !isSidebarClicked; // Toggle state
+
             if (isSidebarClicked) {
-                sidebar.classList.add('open');
+                sidebar.classList.add('open'); // Open the sidebar
+                sidebar.style.width = '250px'; // Explicitly set width when open
             } else {
-                sidebar.classList.remove('open');
+                sidebar.classList.remove('open'); // Close the sidebar
+                sidebar.style.width = '70px'; // Explicitly set width when closed
+            }
+
+            // Remove hover event listeners when sidebar is manually toggled
+            sidebar.removeEventListener('mouseenter', hoverOpen);
+            sidebar.removeEventListener('mouseleave', hoverClose);
+
+            // Re-enable hover effect only when sidebar is closed
+            if (!isSidebarClicked) {
+                // Only re-enable hover when sidebar is closed
+                sidebar.addEventListener('mouseenter', hoverOpen);
+                sidebar.addEventListener('mouseleave', hoverClose);
             }
         });
 
-        sidebar.addEventListener('mouseenter', function () {
-            if (!isSidebarClicked) {
+        // Hover behavior for opening the sidebar
+        function hoverOpen() {
+            if (!isSidebarClicked) { // Only open on hover if not manually toggled
                 sidebar.classList.add('open');
+                sidebar.style.width = '250px'; // Ensure the sidebar is open on hover
             }
-        });
+        }
 
-        sidebar.addEventListener('mouseleave', function () {
-            if (!isSidebarClicked) {
+        // Hover behavior for closing the sidebar
+        function hoverClose() {
+            if (!isSidebarClicked) { // Only close on hover if not manually toggled
                 sidebar.classList.remove('open');
+                sidebar.style.width = '70px'; // Ensure the sidebar is closed on hover
             }
-        });
+        }
+
+        // Initially enable hover effect only when sidebar is closed
+        sidebar.addEventListener('mouseenter', hoverOpen);
+        sidebar.addEventListener('mouseleave', hoverClose);
 
         $(document).ready(function () {
             const apiKey = 'PFXdUFwPMihLk1IzaFIng3tUuzhftAHd'; // Your API Key
@@ -682,7 +707,6 @@
                     closeDetailsModal(); // Close the event details modal
                 }
             }
-
             // Function to edit an event
             function editEvent() {
                 if (currentEvent) {

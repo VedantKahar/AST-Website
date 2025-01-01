@@ -5,8 +5,8 @@ Abstract Public Holidays API
 
 
 
-$(document).ready(function () {
-            const apiKey = 'PFXdUFwPMihLk1IzaFIng3tUuzhftAHd'; // Your API Key
+	$(document).ready(function () {
+            const apiKey = 'PFXdUFwPMihLk1IzaFIng3tUuzhftAHd'; // calendarific API Key
             const countryCode = 'IN'; // Country code for India
             const year = 2025; // Year for fetching holidays
 
