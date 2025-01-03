@@ -6,10 +6,12 @@
     <title>AST Intranet</title>
     <style>
         body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff; /* Lighter background for a clean, professional look */
+            color: #333;
+            line-height: 1.6;
             margin: 0;
-            font-family: Arial, sans-serif;
-            color: #000;
-            transition: background-color 0.3s ease-in-out;
+            padding: 0;
         }
 
         .sidebar {
@@ -29,10 +31,10 @@
             width: 250px;
         }
 
-            .sidebar:hover {
-                width: 250px;
-                background-color: #354b60;
-            }
+        .sidebar:hover {
+            width: 250px;
+            background-color: #354b60;
+        }
 
         .sidebar h2 {
             font-size: 1.2em;
@@ -152,9 +154,9 @@
             transition: border 0.3s ease;
         }
 
-            .header input:focus {
-                border: 1px solid #16a085;
-            }
+        .header input:focus {
+            border: 1px solid #16a085;
+        }
 
         /* Profile container */
         .profile-container {
@@ -265,22 +267,6 @@
             animation: fadeIn 0.5s ease-in;
         }
 
-        .centered-title {
-            text-align: center;
-            margin: 0 auto;
-            color: #16a085;
-            font-weight: bold;
-            margin-top: 40px;
-            font-size: 2em;
-        }
-
-        .cards-container {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-            animation: fadeIn 0.5s ease-in;
-        }
-
         .card {
             flex: 1;
             background-color: #34495e;
@@ -332,106 +318,197 @@
         }
 
 
-        .list-item {
-            margin: 5px 0;
+        /* Styling for announcements */
+        .announcements {
+            padding: 20px 0;
+            text-align: center;
+            background-color: #ecf0f1;
         }
 
-        .list-item a {
-            text-decoration: none;
-            color: #16a085;
+        .announcements h3 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 10px;
         }
 
-        .list-item a:hover {
-            text-decoration: underline;
+        .announcements ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 1.2em;
+            color: #7f8c8d;
         }
 
+        .announcements li {
+            margin-bottom: 10px;
+        }
 
+        h2, h3, h4 {
+            margin: 0 0 15px;
+            color: #2c3e50; /* Darker text for headings */
+            font-weight: 600;
+        }
+
+        /* Container for the portals section */
         .stats {
             display: flex;
-            justify-content: space-around;
-            padding: 20px 0; /* Increased padding for more space */
-            text-align: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap; /* Allows the boxes to wrap onto the next line */
+            justify-content: space-between;
+            padding: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .stats div {
-            background-color: #34495e;
-            padding: 20px; /* Increased padding for a more balanced look */
-            border-radius: 8px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             flex: 1;
-            margin: 0 15px; /* Increased margin for equal spacing */
-            transition: transform 0.3s ease-in-out;
-            display: flex; /* Make divs flex containers */
-            flex-direction: column; /* Align child elements vertically */
-            justify-content: center; /* Center content vertically */
-            align-items: center; /* Center content horizontally */
-            width: calc(50% - 30px); /* Ensure two boxes fit per line, accounting for margin */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            width: calc(33.333% - 20px);
         }
 
         .stats div:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .clickable-box {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            padding: 15px;
+            text-align: center;
+            background-color: #16a085;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .clickable-box:hover {
+            background-color: #1abc9c;
         }
 
         .portal-name {
             font-size: 1.5em;
-            color: #16a085;
+            color: #fff;
             font-weight: bold;
             margin-bottom: 8px;
-            position: relative;
+            text-transform: uppercase;
         }
 
         .portal-name::after {
             content: "";
             display: block;
-            width: 80%; /* Set to 80% of the section's width */
-            height: 2px; /* Line thickness */
-            background-color: #fff; /* Line color */
-            margin: 5px auto 0; /* Center the line and add some margin above it */
+            width: 80%;
+            height: 2px;
+            background-color: #fff;
+            margin: 8px auto;
         }
 
-        /* Make sure the anchor tag covers the entire area of the div */
-        .stats div a {
-            display: block; /* Make the anchor tag a block element to cover the entire div */
-            text-decoration: none; /* Remove the underline from the link */
-            color: inherit; /* Inherit the color from the parent elements */
+        .description {
+            font-size: 1.1em;
+            color: #ecf0f1;
+            margin-bottom: 10px;
+            transition: font-size 0.5s ease, margin-bottom 0.5s ease, color 0.5s ease;
         }
 
-        /* Hover effect for clickable box */
-        .stats div a:hover {
-            transform: scale(1.05); /* Optional: Apply hover effect on the whole box */
+        h4 {
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: normal;
         }
 
-        /* Styling for both h3 and h4 */
-        .stats div h3, .stats div h4 {
-            font-size: 1.5em;
-            color: #16a085;
-            margin: 10px 0;
-            position: relative;
+        /* Button styling */
+        .open-manual-btn {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .stats div h3::after {
-            content: "";
-            display: block;
-            position: absolute;
-            left: 0; /* Align line to the left of the section */
-            bottom: -5px; /* Adjust the position below the text */
-            width: 100%; /* Set to 100% to cover the entire section width */
-            height: 2px; /* Line thickness */
-            background-color: #fff; /* Line color */
+        .open-manual-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .open-manual-btn:focus {
+            outline: none;
+        }
+
+        /* Orders Overview section */
+        h3 {
+            font-size: 2em;
+            color: #16a085; /* Teal color for the headings */
+            text-align: center; /* Center the numbers */
+            margin: 0; /* Remove default margin */
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #bdc3c7; /* Light gray color for descriptions */
+            margin-top: 5px;
+            text-align: center; /* Center the paragraph text as well */
+        }
+        /*.section {
+            padding: 30px;*/
+            /*background-color: #ecf0f1;*/ /* Light background for the section */
+            /*border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }*/
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stats div {
+            background-color: #34495e; /* Dark blue for the card background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .stats div:hover {
+            transform: translateY(-5px); /* Slight upward movement on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+        }
+
+        .stats div h3 {
+            /* font-size: 2.5em;*/ /* Larger font size for the numbers */
+            color: #16a085; /* Teal color for the numbers */
+            margin-bottom: 10px;
         }
 
         .stats div p {
-            font-size: 1.1em; /* Slightly smaller font size for descriptions */
-            margin: 0 0 10px; /* Adjusted margin for spacing below the description */
-            color: #bdc3c7;
+            font-size: 1.2em;
+            color: #ecf0f1; /* White text color for the descriptions */
         }
-        /* Page wrapper to hold both sidebar and content */
-        .page-wrapper {
-            display: flex;
-            height: 100vh; /* Full height */
-            transition: margin-left 0.3s ease; /* Smooth transition for sidebar */
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .stats div {
+                width: calc(50% - 20px);
+            }
         }
+
+        @media (max-width: 480px) {
+            .stats div {
+                width: 100%;
+            }
+        }
+
 
         /* Section styling */
         .manuals {
@@ -460,7 +537,7 @@
 
         /* Resource item container */
         .manual-item {
-            background-color: #34495e;
+            background-color: #fff; /* #34495e;*/
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -494,14 +571,18 @@
             color: #7f8c8d;
             line-height: 1.6;
             margin-bottom: 0;
-            transition: font-size 0.5s ease, color 0.5s ease; /* Increased duration and smoother transition */
+            transition: font-size 0.5s ease, color 0.5s ease, line-height 0.5s ease; /* Smooth transition for font-size, color, and line-height */
         }
-
+        /* Additional styling for the sidebar open/close animation */
+        .sidebar.open .description,
+        .sidebar.open .manual-description {
+            transition: font-size 0.75s ease-in-out, color 0.75s ease-in-out, line-height 0.75s ease-in-out; /* Slightly slower transition when sidebar opens */
+        }
 
         /* Hover effect for text resizing */
-        .manual-item:hover .manual-description {
-            font-size: 1.2em; /* Adjust font size on hover (for example, to make it larger) */
-        }
+        /*.manual-item:hover .manual-description {
+            font-size: 1.2em;*/ /* Adjust font size on hover (for example, to make it larger) */
+        /*}*/
 
         /* For responsive design */
         @media (max-width: 768px) {
@@ -568,20 +649,22 @@
             text-align: center;
             padding: 10px;
             margin-top: 20px;
-            background-color: #2c3e50;
-            color: #bdc3c7;
+            background-color: #5b92a7; /* Lighter blue for the footer */
+            color: #000;
             border-radius: 8px;
             font-size: 0.9em;
             box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
             margin-left: 80px;
-            margin-right:10px;
-            margin-bottom:10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
             transition: margin-left 0.3s ease;
+    
         }
 
         .sidebar.open ~ .footer {
-            margin-left: 250px; /* If sidebar is open, move footer further right */
+            margin-left: 250px;
         }
+
     </style>
 
 </head>
@@ -624,7 +707,7 @@
                 <p>
                     Advanced Sys-Tek Limited is a leading innovator in the Oil & Gas industry,<br />
                     specializing in Fluid Metering and Terminal Automation Systems.
-                </p>             
+                </p>
                 <p>
                     Headquartered in India with a growing global presence, we deliver turnkey solutions
                     in Measurement, Control, and Automation through expert system integration, manufacturing,
@@ -658,21 +741,22 @@
         </div>
 
         <hr>
-        <section class="section">
-            <h2>Important Announcements</h2>
+        <!-- Important Announcements Section -->
+        <section class="announcements">
+            <h3>Important Announcements</h3>
             <ul>
-                <li> Recent order received:<b> XYZ System for $2 million.</b></li>
-                <li> Prabhas Awarded <b>"Best Innovator 2024."</b></li>
+                <li>Recent order received: <b>XYZ System for $2 million.</b></li>
+                <li>Prabhas Awarded <b>"Best Innovator 2024."</b></li>
             </ul>
         </section>
 
         <hr>
+
         <section class="section">
             <h2>Our Portals</h2>
             <div class="stats">
                 <div>
-                    <a href="your-link-here" class="clickable-box">
-                        <!-- Wrap the contents inside an anchor tag -->
+                    <a href="your-link-here" target="_blank" class="clickable-box">
                         <span class="portal-name">Eresource</span>
                         <p class="description">Access a wide range of digital resources and services.</p>
                         <h4>Open Portal</h4>
@@ -682,7 +766,7 @@
                     </a>
                 </div>
                 <div>
-                    <a href="your-link-here" class="clickable-box">
+                    <a href="your-link-here" target="_blank" class="clickable-box">
                         <span class="portal-name">Spine HR</span>
                         <p class="description">Manage human resources and employee data efficiently.</p>
                         <h4>Open Portal</h4>
@@ -691,8 +775,9 @@
                         <button class="open-manual-btn">Open Manual</button>
                     </a>
                 </div>
+
                 <div>
-                    <a href="your-link-here" class="clickable-box">
+                    <a href="your-link-here" target="_blank" class="clickable-box">
                         <span class="portal-name">CIM</span>
                         <p class="description">Centralized system for inventory and material management.</p>
                         <h4>Open Portal</h4>
@@ -701,8 +786,9 @@
                         <button class="open-manual-btn">Open Manual</button>
                     </a>
                 </div>
+
                 <div>
-                    <a href="your-link-here" class="clickable-box">
+                    <a href="your-link-here" target="_blank" class="clickable-box">
                         <span class="portal-name">CRR</span>
                         <p class="description">Track and manage customer relationship records easily.</p>
                         <h4>Open Portal</h4>
@@ -710,12 +796,12 @@
                     <a href="https://www.youtube.com/" target="_blank">
                         <button class="open-manual-btn">Open Manual</button>
                     </a>
-
                 </div>
             </div>
         </section>
 
         <hr>
+
         <section class="section">
             <h2>Orders Overview</h2>
             <div class="stats">
@@ -729,6 +815,8 @@
                 </div>
             </div>
         </section>
+
+
         <hr>
         <section class="manuals">
             <h2>Manuals</h2>
@@ -758,7 +846,7 @@
                         <img src="https://media.licdn.com/dms/image/v2/D4D22AQGobAIxlOHYKg/feedshare-shrink_800/feedshare-shrink_800/0/1729238416221?e=2147483647&v=beta&t=rlgNJodfrokBuBaLoj-Ghu56o9QtbA2H0zBIQI0fq4Y" alt="Garba">
                         <h3 class="event-title">Garba</h3>
                         <p class="event-description">
-                            A lively traditional dance event celebrating the festival of Navratri. 
+                            A lively traditional dance event celebrating the festival of Navratri.
                         </p>
                     </a>
                 </div>
