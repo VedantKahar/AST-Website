@@ -25,79 +25,79 @@
             z-index: 2;
         }
 
-            .sidebar.open {
-                width: 250px;
-            }
+        .sidebar.open {
+            width: 250px;
+        }
 
-            .sidebar:hover {
-                width: 250px;
-                background-color: #34495e;
-            }
+        .sidebar:hover {
+            width: 250px;
+            background-color: #34495e;
+        }
 
-            .sidebar h2 {
-                font-size: 1.2em;
-                margin: 20px;
-                display: flex;
-                align-items: center;
-                color: #ecf0f1;
-            }
+        .sidebar h2 {
+            font-size: 1.2em;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            color: #ecf0f1;
+        }
 
-                .sidebar h2 img {
-                    width: 30px;
-                    height: 30px;
-                    margin-right: 10px;
-                    cursor: pointer;
-                }
+        .sidebar h2 img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
 
-                .sidebar h2 span {
-                    opacity: 0;
-                    transform: translateX(-20px);
-                    transition: opacity 0.3s ease, transform 0.3s ease;
-                    white-space: nowrap;
-                    overflow: hidden;
-                }
+        .sidebar h2 span {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+        }
 
-            .sidebar.open h2 span {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .sidebar.open h2 span {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-            .sidebar a {
-                text-decoration: none;
-                color: #bdc3c7;
-                font-size: 1em;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                padding: 15px 20px;
-                margin: 10px 0;
-                transition: color 0.3s ease, background-color 0.3s ease;
-                border-radius: 5px;
-            }
+        .sidebar a {
+            text-decoration: none;
+            color: #bdc3c7;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 20px;
+            margin: 10px 0;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: 5px;
+        }
 
-                .sidebar a img {
-                    width: 20px;
-                    height: 20px;
-                }
+        .sidebar a img {
+            width: 20px;
+            height: 20px;
+        }
 
-                .sidebar a span {
-                    opacity: 0;
-                    transform: translateX(-20px);
-                    transition: opacity 0.3s ease, transform 0.3s ease;
-                    white-space: nowrap;
-                    overflow: hidden;
-                }
+        .sidebar a span {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+        }
 
-            .sidebar.open a span {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .sidebar.open a span {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-            .sidebar a:hover {
-                color: #ecf0f1;
-                background-color: #16a085;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            }
+        .sidebar a:hover {
+            color: #ecf0f1;
+            background-color: #16a085;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
 
         .main-content {
             margin-left: 70px;
@@ -152,9 +152,9 @@
             transition: border 0.3s ease;
         }
 
-            .header input:focus {
-                border: 1px solid #16a085;
-            }
+        .header input:focus {
+            border: 1px solid #16a085;
+        }
 
         /* Profile container */
         .profile-container {
@@ -163,87 +163,13 @@
             gap: 10px; /* Space between profile image and username */
         }
 
-            .profile-container .profile-img {
-                width: 30px !important; /* Force smaller width */
-                height: 30px !important; /* Force smaller height */
-                border-radius: 50%;
-                object-fit: cover;
-                margin: 0; /* Ensure no extra margin */
-            }
-
-        /* Achievements Section */
-        .achievements-section {
-            margin-top: 20px;
+        .profile-container .profile-img {
+            width: 30px !important; /* Force smaller width */
+            height: 30px !important; /* Force smaller height */
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0; /* Ensure no extra margin */
         }
-
-        .achievement-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-            .achievement-card img {
-                width: 100%;
-                max-width: 400px;
-                height: auto;
-                border-radius: 8px;
-                margin-bottom: 15px;
-            }
-
-            .achievement-card h3 {
-                font-size: 1.5em;
-                color: #2c3e50;
-                margin-bottom: 10px;
-            }
-
-            .achievement-card p {
-                color: #7f8c8d;
-                text-align: center;
-                font-size: 1em;
-            }
-
-        /* Competition Winners Section */
-        .competition-section {
-            margin-top: 40px;
-        }
-
-        .competition-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-            .competition-card img {
-                width: 120px;
-                height: 120px;
-                object-fit: cover;
-                border-radius: 50%;
-                margin-right: 20px;
-            }
-
-            .competition-card div {
-                flex-grow: 1;
-            }
-
-            .competition-card h4 {
-                font-size: 1.4em;
-                color: #16a085;
-                margin-bottom: 5px;
-            }
-
-            .competition-card span {
-                color: #7f8c8d;
-            }
 
         .user-name {
             color: #ecf0f1;
@@ -252,7 +178,163 @@
             margin-left: 0;
         }
 
-        
+        /* Section Styling */
+        h2 {
+            color: #16a085;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        /* General Container Styling for Sections */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Company Achievements Section */
+        .achievements-section .achievement-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centering the cards */
+            gap: 20px;
+        }
+
+        .achievements-section .achievement-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 100%; /* One item per row */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .achievements-section .achievement-card img {
+                width: 100%; /* Full width */
+                height: 300px; /* Larger image size */
+                object-fit: cover; /* Ensure the image covers the area */
+                border-radius: 8px;
+            }
+
+            .achievements-section .achievement-card h3 {
+                font-size: 1.6em;
+                margin-top: 15px;
+                color: #34495e;
+            }
+
+            .achievements-section .achievement-card p {
+                font-size: 1em;
+                color: #7f8c8d;
+                margin-top: 10px;
+            }
+
+            .achievements-section .achievement-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+
+
+        /* Employee Achievements Section */
+        .employee-achievements-section .achievement-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centering the cards */
+            gap: 20px;
+        }
+
+        .employee-achievements-section .achievement-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 100%; /* One item per row */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .employee-achievements-section .achievement-card img {
+                width: 100%; /* Full width */
+                height: 300px; /* Larger image size */
+                object-fit: cover; /* Ensure the image covers the area */
+                border-radius: 8px;
+            }
+
+            .employee-achievements-section .achievement-card h3 {
+                font-size: 1.6em;
+                margin-top: 15px;
+                color: #34495e;
+            }
+
+            .employee-achievements-section .achievement-card p {
+                font-size: 1em;
+                color: #7f8c8d;
+                margin-top: 10px;
+            }
+
+            .employee-achievements-section .achievement-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+
+
+        /* Competition Winners Section */
+        .competition-section .competition-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between; /* Space between cards */
+        }
+
+        .competition-section .competition-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            flex-basis: 45%; /* Two items per row */
+            min-width: 300px; /* Prevents card from shrinking too much */
+            flex-grow: 1; /* Allows the card to grow and shrink based on available space */
+            flex-shrink: 1; /* Ensures the card shrinks if needed */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .competition-section .competition-card img {
+                width: 100%; /* Full width */
+                height: 200px; /* Adjust the height to ensure full image visibility */
+                object-fit: cover; /* Ensure the image covers the area */
+                border-radius: 8px;
+            }
+
+            .competition-section .competition-card h4 {
+                font-size: 1.4em;
+                margin-top: 15px;
+                color: #34495e;
+            }
+
+            .competition-section .competition-card span {
+                font-size: 1.1em;
+                color: #7f8c8d;
+                margin-top: 5px;
+            }
+
+            .competition-section .competition-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+
+
+        /* Media Query to Adjust Layout on Smaller Screens */
+        @media screen and (max-width: 768px) {
+            .competition-card {
+                flex-basis: 100%; /* One item per row on smaller screens */
+            }
+        }
+
+        /* Media Query to Adjust Layout on Sidebar Open */
+        @media screen and (max-width: 1200px) {
+            .competition-card {
+                width: calc(50% - 10px); /* Two items per row on medium screens */
+            }
+        }
 
         .footer {
             text-align: center;
@@ -266,9 +348,6 @@
             transition: margin-left 0.3s ease;
         }
 
-        .sidebar.open ~ .footer {
-            margin-left: 250px; /* If sidebar is open, move footer further right */
-        }
     </style>
 </head>
 <body>
@@ -292,67 +371,89 @@
 
     <div class="main-content">
         <div class="header">
-            <img src="../icons/AST Logo.png" alt="AST logo">
+            <img src="../images/AST Logo.png" alt="AST logo">
             <input type="text" placeholder="Search anything...">
             <div class="profile-container">
-                <img src="../icons/profile-pic.jfif" alt="Profile Picture" class="profile-img">
+                <img src="../images/profile-pic.jfif" alt="Profile Picture" class="profile-img">
                 <span class="user-name">q</span>
             </div>
         </div>
 
-        <div class="achievements-section">
-            <!-- Company Achievements -->
-            <div class="achievement-card">
-                <img src="../icons/AST bg.jfif" alt="Company Achievement">
-                <h3>Company Achievement 1</h3>
-                <p>Details about the achievement. This can include awards or recognitions received by the company.</p>
+        <!-- Company Achievements Section -->
+        <section class="achievements-section">
+            <h2>Company Achievements</h2>
+            <div class="achievement-cards-container">
+                <div class="achievement-card">
+                    <img src="../images/AST bg.jfif" alt="Company Achievement">
+                    <h3>Company Achievement 1</h3>
+                    <p>Details about the achievement. This can include awards or recognitions received by the company.</p>
+                </div>
+                <div class="achievement-card">
+                    <img src="../images/company-achievement2.jpg" alt="Company Achievement">
+                    <h3>Company Achievement 2</h3>
+                    <p>Details about another company achievement.</p>
+                </div>
             </div>
-            <div class="achievement-card">
-                <img src="../images/company-achievement2.jpg" alt="Company Achievement">
-                <h3>Company Achievement 2</h3>
-                <p>Details about another company achievement.</p>
-            </div>
-        </div>
+        </section>
 
-        <div class="competition-section">
+        <!-- Employee Achievements Section -->
+        <section class="employee-achievements-section">
+            <h2>Employee Achievements</h2>
+            <div class="achievement-cards-container">
+                <div class="achievement-card">
+                    <img src="../images/employee-achievement1.jpg" alt="Employee Achievement">
+                    <h3>Employee of the Month</h3>
+                    <p>Employee Name: John Doe. A brief description of the employee's achievement.</p>
+                </div>
+                <div class="achievement-card">
+                    <img src="../images/employee-achievement2.jpg" alt="Employee Achievement">
+                    <h3>Top Performer Award</h3>
+                    <p>Employee Name: Jane Smith. A brief description of their outstanding performance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Competition Winners Section -->
+        <section class="competition-section">
             <h2>Competition Winners</h2>
-            <div class="competition-card">
-                <img src="../images/cricket-winner.jpg" alt="Cricket Winner">
-                <div>
-                    <h4>Cricket - Sports Week</h4>
-                    <span>Winner: John Doe</span>
+            <div class="competition-cards-container">
+                <div class="competition-card">
+                    <img src="../images/AST bg.jfif" alt="Cricket Winner">
+                    <div>
+                        <h4>Cricket - Sports Week</h4>
+                        <span>Winner: John Doe</span>
+                    </div>
+                </div>
+                <div class="competition-card">
+                    <img src="../images/carrom-winner.jpg" alt="Carrom Winner">
+                    <div>
+                        <h4>Carrom - Sports Week</h4>
+                        <span>Winner: Jane Smith</span>
+                    </div>
+                </div>
+                <div class="competition-card">
+                    <img src="../images/volleyball-winner.jpg" alt="Volleyball Winner">
+                    <div>
+                        <h4>Volleyball - Sports Week</h4>
+                        <span>Winner: Mark Johnson</span>
+                    </div>
+                </div>
+                <div class="competition-card">
+                    <img src="../images/table-tennis-winner.jpg" alt="Table Tennis Winner">
+                    <div>
+                        <h4>Table Tennis - Sports Week</h4>
+                        <span>Winner: Emily Davis</span>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="competition-card">
-                <img src="../images/carrom-winner.jpg" alt="Carrom Winner">
-                <div>
-                    <h4>Carrom - Sports Week</h4>
-                    <span>Winner: Jane Smith</span>
-                </div>
-            </div>
-
-            <div class="competition-card">
-                <img src="../images/volleyball-winner.jpg" alt="Volleyball Winner">
-                <div>
-                    <h4>Volleyball - Sports Week</h4>
-                    <span>Winner: Mark Johnson</span>
-                </div>
-            </div>
-
-            <div class="competition-card">
-                <img src="../images/table-tennis-winner.jpg" alt="Table Tennis Winner">
-                <div>
-                    <h4>Table Tennis - Sports Week</h4>
-                    <span>Winner: Emily Davis</span>
-                </div>
-            </div>
-        </div>
-
+        <!-- Footer Section -->
         <footer class="footer">
             &copy; 2024 Advanced Sys-Tek Limited | Contact Us | Feedback
         </footer>
     </div>
+
 
     <script>
         const toggleSidebar = document.getElementById('toggleSidebar');
@@ -404,6 +505,6 @@
         sidebar.addEventListener('mouseenter', hoverOpen);
         sidebar.addEventListener('mouseleave', hoverClose);
     </script>
-    
+
 </body>
 </html>
