@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Events"
+    "\\Achievements",
+    "\\Events",
+    "\\Homepage"
   ],
-  "SelectedNode": "\\Employees",
+  "SelectedNode": "\\Homepage\\homepage.html",
   "PreviewInSolutionExplorer": false
 }

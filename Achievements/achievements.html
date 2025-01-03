@@ -277,49 +277,77 @@
 
 
         /* Competition Winners Section */
-        .competition-section .competition-cards-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-between; /* Space between cards */
-        }
 
-        .competition-section .competition-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            flex-basis: 45%; /* Two items per row */
-            min-width: 300px; /* Prevents card from shrinking too much */
-            flex-grow: 1; /* Allows the card to grow and shrink based on available space */
-            flex-shrink: 1; /* Ensures the card shrinks if needed */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+        /* box for the contents*/
+        /*.competition-section {
+            padding: 40px;*/
+            /*background-color: #f4f4f4;*/ /* Light background color */
+            /*border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/ /* Subtle shadow */
+        /*}*/
 
-            .competition-section .competition-card img {
-                width: 100%; /* Full width */
-                height: 200px; /* Adjust the height to ensure full image visibility */
-                object-fit: cover; /* Ensure the image covers the area */
+            /* Title styling */
+            /*.competition-section h2 {
+                font-size: 1.7em;
+                color: #2c3e50;*/ /* Darker text color */
+                /*margin-bottom: 20px;
+                font-weight: bold;
+                text-align: left;
+            }*/
+
+            /* Cards container for competition winners */
+            .competition-section .competition-cards-container {
+                display: flex;
+                flex-wrap: wrap; /* Allow cards to wrap onto new lines */
+                gap: 20px; /* Add space between items */
+                justify-content: space-between; /* Distribute items evenly */
+            }
+
+            /* Competition card container */
+            .competition-section .competition-card {
+                background-color: #fff;
+                padding: 20px;
                 border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+                width: calc(50% - 10px); /* Make cards take 50% width, with space between */
+                box-sizing: border-box; /* Ensure padding and margin are included in width */
             }
 
-            .competition-section .competition-card h4 {
-                font-size: 1.4em;
-                margin-top: 15px;
-                color: #34495e;
-            }
+                /* Hover effect for competition cards */
+                .competition-section .competition-card:hover {
+                    transform: translateY(-5px) scale(1.05); /* Slight scaling for smooth resizing */
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+                }
 
-            .competition-section .competition-card span {
-                font-size: 1.1em;
-                color: #7f8c8d;
-                margin-top: 5px;
-            }
+                /* Competition card image */
+                .competition-section .competition-card img {
+                    width: 100%; /* Full width */
+                    height: 200px; /* Adjust the height to ensure full image visibility */
+                    object-fit: cover; /* Ensure the image covers the area */
+                    border-radius: 8px;
+                }
 
-            .competition-section .competition-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            }
+                /* Title inside the competition card */
+                .competition-section .competition-card h4 {
+                    font-size: 1.4em;
+                    margin-top: 15px;
+                    color: #34495e; /* Dark text color for title */
+                }
+
+                /* Description inside the competition card */
+                .competition-section .competition-card span {
+                    font-size: 1.1em;
+                    color: #7f8c8d; /* Lighter text color */
+                    margin-top: 5px;
+                }
+
+                /* Optional link styling for competition cards (if links are used) */
+                .competition-section .competition-card a {
+                    text-decoration: none;
+                    color: inherit; /* Inherit color from the competition card */
+                }
+
 
 
         /* Media Query to Adjust Layout on Smaller Screens */
